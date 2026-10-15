@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-15",
+  "status": "archived first attempt; architecture repair required before a teaching checkpoint",
+  "architecture": {
+    "status": "failed",
+    "findings": [
+      "Component styling is centralized in global CSS",
+      "Navigation bypasses the available Crease Sidebar",
+      "Known component authoring sources are globally ignored by lint"
+    ],
+    "coverageEvidence": "attempt-01/effective-lint-coverage.json"
+  },
+  "creaseCommit": "244b4c79cf901a28f7e2e8d57a9b4dd59aaee390",
+  "build": "TypeScript and production Vite build passed",
+  "lint": "application feature lint passed; exact authoring-source exclusions documented",
+  "coreProduction": {
+    "passed": [
+      "15 realistic issues load",
+      "all icons resolve",
+      "menu opens with focus on its active option",
+      "arrow key moves actual focus",
+      "status edit restores focus after regrouping",
+      "status edit persists through reload",
+      "priority picker edits the issue",
+      "assignee picker edits the same issue",
+      "Escape dismisses the picker and restores focus",
+      "empty results provide a working clear path",
+      "priority filter changes the dataset",
+      "My issues uses the same updated assignments",
+      "composer autofocuses the title",
+      "empty creation is rejected with a useful error",
+      "closing and reopening preserves the draft",
+      "keyboard creation adds one issue",
+      "created issue persists through reload",
+      "sample reset is confirmed and restores the baseline"
+    ],
+    "count": 18
+  },
+  "additionalDevelopment": {
+    "passed": [
+      "Display orders actual issues by priority within status",
+      "repeated personal/all navigation stays stable",
+      "Escape closes a nested picker before its composer",
+      "search shortcut focuses the field and typing suppresses creation shortcut",
+      "cancel reset leaves data intact",
+      "390px layout stays contained with labelled navigation",
+      "invalid saved data recovers to schema-valid sample issues with a notice"
+    ],
+    "count": 7,
+    "consoleErrors": []
+  },
+  "additionalProduction": {
+    "passed": [
+      "write failure reports unsaved state without losing the visible edit",
+      "failed write does not falsely persist after reload",
+      "group collapse and expand works"
+    ],
+    "count": 3
+  },
+  "axeProduction": [
+    {
+      "state": "issue-list",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "assignee-menu",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "count": 1,
+          "nodes": [
+            {
+              "target": ["#assignee-CRE-128-trigger"],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"assignee-CRE-128-content\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "state": "issue-composer",
+      "violations": [],
+      "incomplete": []
+    }
+  ],
+  "manualRelationshipAndGeometryChecks": {
+    "liveAriaControls": [
+      {
+        "element": "In progress4",
+        "controls": "group-progress",
+        "exists": true
+      },
+      {
+        "element": "assignee-CRE-128-trigger",
+        "controls": "assignee-CRE-128-content",
+        "exists": true
+      },
+      {
+        "element": "Todo5",
+        "controls": "group-todo",
+        "exists": true
+      },
+      {
+        "element": "Backlog4",
+        "controls": "group-backlog",
+        "exists": true
+      },
+      {
+        "element": "Done2",
+        "controls": "group-done",
+        "exists": true
+      }
+    ],
+    "menuBox": {
+      "x": 1186,
+      "y": 200,
+      "width": 214,
+      "height": 240.28125
+    },
+    "metrics": {
+      "rowHeights": [44],
+      "header": 58,
+      "toolbar": 52,
+      "groupHeader": 40,
+      "font": "\"Inter Variable\", Inter, ui-sans-serif, system-ui, sans-serif",
+      "missingIcons": 0
+    }
+  },
+  "negativeDiagnostics": [
+    {
+      "file": "feature-negative.ts",
+      "rules": [
+        "no-restricted-imports",
+        "crease/no-raw-composition",
+        "crease/no-application-styles",
+        "crease/no-raw-controls",
+        "crease/no-unverifiable-ui"
+      ]
+    },
+    {
+      "file": "not-registered.ts",
+      "rules": ["crease/no-raw-controls"]
+    }
+  ],
+  "platform": "Windows / Chromium; no complete cross-browser or theme matrix claimed"
+}

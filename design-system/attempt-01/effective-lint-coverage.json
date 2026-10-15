@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-15",
+  "status": "feature-only enforcement; component authoring and CSS are uncovered",
+  "files": [
+    {
+      "file": "src/view.ts",
+      "ignored": false,
+      "configured": true,
+      "creaseRules": [
+        "crease/no-raw-controls",
+        "crease/no-raw-composition",
+        "crease/no-unapproved-renderer",
+        "crease/no-application-styles",
+        "crease/component-contract",
+        "crease/no-unverifiable-ui"
+      ]
+    },
+    {
+      "file": "src/design/shell.ts",
+      "ignored": true,
+      "configured": false,
+      "creaseRules": []
+    },
+    {
+      "file": "src/ui/button.ts",
+      "ignored": true,
+      "configured": false,
+      "creaseRules": []
+    },
+    {
+      "file": "src/styles.css",
+      "ignored": true,
+      "configured": false,
+      "creaseRules": []
+    }
+  ]
+}

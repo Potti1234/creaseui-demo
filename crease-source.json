@@ -1,0 +1,29 @@
+{
+  "repository": "https://github.com/Potti1234/creaseui",
+  "commit": "244b4c79cf901a28f7e2e8d57a9b4dd59aaee390",
+  "renderer": "tailwind",
+  "registryItems": [
+    "button",
+    "input",
+    "textarea",
+    "dialog",
+    "dropdown-menu",
+    "separator",
+    "stack",
+    "heading",
+    "text",
+    "empty",
+    "label",
+    "badge",
+    "avatar"
+  ],
+  "note": "Installed from the reviewed PR 28 registry. Product components live in src/design. The registry foundation is not a completed strict lint release.",
+  "localAdaptations": [
+    "src/ui/button.ts: named product variants and explicit transition properties",
+    "src/ui/input.ts: finite search/title appearances",
+    "src/ui/textarea.ts: finite description appearance",
+    "src/ui/dialog.ts: finite composer/reset appearances",
+    "src/ui/dropdown-menu.ts: finite appearances, modified-key delegation and live popup references"
+  ],
+  "lintSnapshotSha256": "efafbbff181f0dc72ee9dbdfa4b12a70a55657acfa2be65b24b5ab2580998682"
+}
