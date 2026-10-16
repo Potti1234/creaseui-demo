@@ -1,64 +1,124 @@
 import type { Html, HtmlBuilder } from 'foldkit/html'
 
+import { button } from '@/ui/button'
+import { card, cardContent, cardFooter, cardHeader, cardTitle } from '@/ui/card'
+import { checkbox } from '@/ui/checkbox'
+import { form } from '@/ui/form'
+import { input } from '@/ui/input'
+import { list, listItem } from '@/ui/list'
+import { section } from '@/ui/section'
+import { stack } from '@/ui/stack'
+import { text } from '@/ui/text'
+
 import { Message, type Model, type Todo } from './main'
 
 const todoRow = (todo: Todo, h: HtmlBuilder<Message>): Html =>
-  h.li(
-    [h.Class('flex items-center gap-3 border-b border-gray-200 py-2')],
-    [
-      h.input([
-        h.Type('checkbox'),
-        h.Id(`todo-${todo.id}`),
-        h.Checked(todo.isDone),
-        h.OnChange(() => Message.ToggledTodo({ id: todo.id })),
-      ]),
-      h.label(
-        [
-          h.For(`todo-${todo.id}`),
-          h.Class(todo.isDone ? 'flex-1 text-gray-400 line-through' : 'flex-1'),
-        ],
-        [todo.title],
+  listItem(
+    {
+      label: checkbox(
+        {
+          id: `todo-${todo.id}`,
+          label: todo.title,
+          isChecked: todo.isDone,
+          onToggle: () => Message.ToggledTodo({ id: todo.id }),
+        },
+        h,
       ),
-      h.button(
-        [
-          h.Type('button'),
-          h.Class('rounded px-2 py-1 text-sm text-red-600 hover:bg-red-50'),
-          h.OnClick(Message.RemovedTodo({ id: todo.id })),
-        ],
-        ['Remove'],
+      endContent: button(
+        {
+          children: ['Remove'],
+          variant: 'ghost',
+          size: 'sm',
+          ariaLabel: `Remove ${todo.title}`,
+          onClick: Message.RemovedTodo({ id: todo.id }),
+        },
+        h,
       ),
-    ],
+    },
+    h,
   )
 
 export const view = (model: Model, h: HtmlBuilder<Message>): Html =>
-  h.main(
-    [h.Class('mx-auto max-w-lg p-8 font-sans')],
-    [
-      h.h1([h.Class('mb-4 text-2xl font-bold')], ['Todos']),
-      h.form(
-        [h.Class('mb-4 flex gap-2'), h.OnSubmit(Message.SubmittedDraft())],
-        [
-          h.input([
-            h.Type('text'),
-            h.Class('flex-1 rounded border border-gray-300 px-3 py-2'),
-            h.Placeholder('What needs doing?'),
-            h.AriaLabel('New todo'),
-            h.Value(model.draft),
-            h.OnInput(value => Message.ChangedDraft({ value })),
-          ]),
-          h.button(
-            [
-              h.Type('submit'),
-              h.Class('rounded bg-blue-600 px-4 py-2 font-medium text-white'),
+  section(
+    {
+      variant: 'transparent',
+      padding: 8,
+      maxWidth: '32rem',
+      class: 'mx-auto',
+      children: [
+        card(
+          {
+            children: [
+              cardHeader({ children: [cardTitle({ children: ['Todos'] }, h)] }, h),
+              cardContent(
+                {
+                  children: [
+                    stack(
+                      {
+                        gap: 4,
+                        children: [
+                          form(
+                            {
+                              ariaLabel: 'Add a todo',
+                              onSubmit: Message.SubmittedDraft(),
+                              children: [
+                                stack(
+                                  {
+                                    direction: 'horizontal',
+                                    gap: 2,
+                                    children: [
+                                      input(
+                                        {
+                                          id: 'new-todo',
+                                          ariaLabel: 'New todo',
+                                          placeholder: 'What needs doing?',
+                                          value: model.draft,
+                                          onInput: value => Message.ChangedDraft({ value }),
+                                          class: 'flex-1',
+                                        },
+                                        h,
+                                      ),
+                                      button({ children: ['Add'], type: 'submit' }, h),
+                                    ],
+                                  },
+                                  h,
+                                ),
+                              ],
+                            },
+                            h,
+                          ),
+                          list(
+                            { hasDividers: true, children: model.todos.map(todo => todoRow(todo, h)) },
+                            h,
+                          ),
+                        ],
+                      },
+                      h,
+                    ),
+                  ],
+                },
+                h,
+              ),
+              cardFooter(
+                {
+                  children: [
+                    text(
+                      {
+                        color: 'secondary',
+                        size: 'sm',
+                        children: [`${model.todos.filter(todo => !todo.isDone).length} left`],
+                      },
+                      h,
+                    ),
+                  ],
+                },
+                h,
+              ),
             ],
-            ['Add'],
-          ),
-        ],
-      ),
-      h.ul([], model.todos.map(todo => todoRow(todo, h))),
-      h.p(
-        [h.Class('mt-4 text-sm text-gray-500')],
-        [`${model.todos.filter(todo => !todo.isDone).length} left`],
-      ),
-    ],
+          },
+          h,
+        ),
+      ],
+    },
+    h,
   )
