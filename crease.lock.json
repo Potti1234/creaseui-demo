@@ -1,0 +1,539 @@
+{
+  "artifacts": [
+    {
+      "exports": [
+        {
+          "contract": "implementation.button",
+          "file": "src/lib/button.ts",
+          "name": "renderButton",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.button",
+          "file": "src/lib/button.ts",
+          "name": "renderButtonLink",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/button.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-lib-button"
+    },
+    {
+      "exports": [
+        {
+          "contract": "implementation.field",
+          "file": "src/lib/field.ts",
+          "name": "controlFieldParts",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.field",
+          "file": "src/lib/field.ts",
+          "name": "renderControlField",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.field",
+          "file": "src/lib/field.ts",
+          "name": "fieldErrorMessages",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/field.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-lib-field"
+    },
+    {
+      "exports": [
+        {
+          "contract": "implementation.input",
+          "file": "src/lib/input.ts",
+          "name": "renderInput",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/input.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-lib-input"
+    },
+    {
+      "exports": [
+        {
+          "contract": "implementation.switch",
+          "file": "src/lib/switch.ts",
+          "name": "renderSwitch",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.switch",
+          "file": "src/lib/switch.ts",
+          "name": "switchIds",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/switch.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-lib-switch"
+    },
+    {
+      "exports": [
+        {
+          "contract": "implementation.textarea",
+          "file": "src/lib/textarea.ts",
+          "name": "renderTextarea",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/textarea.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-lib-textarea"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/button-group-join.stylex.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-stylex-button-group-join.stylex"
+    },
+    {
+      "exports": [
+        {
+          "contract": "control.button",
+          "file": "src/ui/stylex/button.ts",
+          "name": "button"
+        },
+        {
+          "contract": "control.button",
+          "file": "src/ui/stylex/button.ts",
+          "name": "buttonLink"
+        },
+        {
+          "contract": "control.button",
+          "file": "src/ui/stylex/button.ts",
+          "name": "buttonVisualStyles"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/button.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-button"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "card"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardHeader"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardTitle"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardDescription"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardAction"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardContent"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardFooter"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/card.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-card"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/contracts.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-stylex-contracts"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/field.markers.stylex.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-stylex-field.markers.stylex"
+    },
+    {
+      "exports": [
+        {
+          "contract": "control.field",
+          "file": "src/ui/stylex/field.ts",
+          "name": "fieldSet"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/stylex/field.ts",
+          "name": "fieldLegend"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/stylex/field.ts",
+          "name": "fieldGroup"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/stylex/field.ts",
+          "name": "controlField"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/stylex/field.ts",
+          "name": "field"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/stylex/field.ts",
+          "name": "fieldContent"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/stylex/field.ts",
+          "name": "fieldLabel"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/stylex/field.ts",
+          "name": "fieldTitle"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/stylex/field.ts",
+          "name": "fieldDescription"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/stylex/field.ts",
+          "name": "fieldSeparator"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/stylex/field.ts",
+          "name": "fieldError"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/field.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-field"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/foundations-tokens.stylex.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-stylex-foundations-tokens.stylex"
+    },
+    {
+      "exports": [
+        {
+          "contract": "typography.heading",
+          "file": "src/ui/stylex/heading.ts",
+          "name": "heading"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/heading.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-heading"
+    },
+    {
+      "exports": [
+        {
+          "contract": "control.input",
+          "file": "src/ui/stylex/input.ts",
+          "name": "input"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/input.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-input"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/interaction-tokens.stylex.const.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-stylex-interaction-tokens.stylex.const"
+    },
+    {
+      "exports": [
+        {
+          "contract": "control.label",
+          "file": "src/ui/stylex/label.ts",
+          "name": "label"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/label.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-label"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/reset.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-stylex-reset"
+    },
+    {
+      "exports": [
+        {
+          "contract": "composition.separator",
+          "file": "src/ui/stylex/separator.ts",
+          "name": "separator"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/separator.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-separator"
+    },
+    {
+      "exports": [
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stylex/stack.ts",
+          "name": "stack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stylex/stack.ts",
+          "name": "hStack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stylex/stack.ts",
+          "name": "vStack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stylex/stack.ts",
+          "name": "stackItem"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/stack.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-stack"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/style.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-stylex-style"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.switch",
+          "file": "src/ui/stylex/switch.ts",
+          "name": "switchControl"
+        },
+        {
+          "contract": "component.switch",
+          "file": "src/ui/stylex/switch.ts",
+          "name": "switch"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/switch.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-switch"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.tabs",
+          "file": "src/ui/stylex/tabs.ts",
+          "name": "tabs"
+        },
+        {
+          "contract": "component.tabs",
+          "file": "src/ui/stylex/tabs.ts",
+          "name": "create"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/tabs.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-tabs"
+    },
+    {
+      "exports": [
+        {
+          "contract": "typography.text",
+          "file": "src/ui/stylex/text.ts",
+          "name": "text"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/text.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-text"
+    },
+    {
+      "exports": [
+        {
+          "contract": "control.textarea",
+          "file": "src/ui/stylex/textarea.ts",
+          "name": "textarea"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/textarea.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stylex-textarea"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/tokens.stylex.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-stylex-tokens.stylex"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/entry.ts",
+          "rawRendering": false,
+          "role": "setup"
+        }
+      ],
+      "id": "crease/setup-src-entry"
+    }
+  ],
+  "policyVersion": "crease-default-v1",
+  "renderer": "stylex",
+  "schemaVersion": 1
+}
