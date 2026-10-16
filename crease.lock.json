@@ -73,6 +73,36 @@
       "id": "crease/lib-field"
     },
     {
+      "exports": [
+        {
+          "contract": "implementation.form",
+          "file": "src/lib/form.ts",
+          "name": "renderForm",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.form",
+          "file": "src/lib/form.ts",
+          "name": "renderErrorSummary",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.form",
+          "file": "src/lib/form.ts",
+          "name": "formControlIds",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/form.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/lib-form"
+    },
+    {
       "exports": [],
       "files": [
         {
@@ -568,6 +598,48 @@
     {
       "exports": [
         {
+          "contract": "composition.form",
+          "file": "src/ui/form.ts",
+          "name": "form"
+        },
+        {
+          "contract": "composition.form",
+          "file": "src/ui/form.ts",
+          "name": "errorSummary"
+        },
+        {
+          "contract": "composition.form",
+          "file": "src/ui/form.ts",
+          "name": "formItem"
+        },
+        {
+          "contract": "composition.form",
+          "file": "src/ui/form.ts",
+          "name": "formLabel"
+        },
+        {
+          "contract": "composition.form",
+          "file": "src/ui/form.ts",
+          "name": "formDescription"
+        },
+        {
+          "contract": "composition.form",
+          "file": "src/ui/form.ts",
+          "name": "formMessage"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/form.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/form"
+    },
+    {
+      "exports": [
+        {
           "contract": "typography.heading",
           "file": "src/ui/heading.ts",
           "name": "heading"
@@ -598,6 +670,45 @@
         }
       ],
       "id": "crease/input"
+    },
+    {
+      "exports": [
+        {
+          "contract": "composition.list",
+          "file": "src/ui/list.ts",
+          "name": "list"
+        },
+        {
+          "contract": "composition.list",
+          "file": "src/ui/list.ts",
+          "name": "listItem"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/list.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/list"
+    },
+    {
+      "exports": [
+        {
+          "contract": "composition.section",
+          "file": "src/ui/section.ts",
+          "name": "section"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/section.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/section"
     },
     {
       "exports": [
