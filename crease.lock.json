@@ -716,6 +716,28 @@
     {
       "exports": [
         {
+          "contract": "composition.grid",
+          "file": "src/ui/pleat/grid.ts",
+          "name": "grid"
+        },
+        {
+          "contract": "composition.grid",
+          "file": "src/ui/pleat/grid.ts",
+          "name": "gridSpan"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/pleat/grid.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-grid"
+    },
+    {
+      "exports": [
+        {
           "contract": "typography.heading",
           "file": "src/ui/pleat/heading.ts",
           "name": "heading"
