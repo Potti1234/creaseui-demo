@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@effect/platform-browser": "4.0.0-rc.117",
+    "@foldkit/ui": "0.164.0",
+    "csstype": "^3.2.3",
     "effect": "4.0.0-rc.117",
-    "foldkit": "0.164.0",
-    "@foldkit/ui": "0.164.0"
+    "foldkit": "0.164.0"
   },
   "devDependencies": {
+    "@creaseui/lint": "file:vendor/creaseui-lint-0.1.0.tgz",
     "@foldkit/vite-plugin": "0.25.0",
     "typescript": "^6.0.3",
     "vite": "^8.0.16"
