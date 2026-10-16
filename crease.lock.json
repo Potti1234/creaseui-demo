@@ -1,0 +1,894 @@
+{
+  "artifacts": [
+    {
+      "exports": [
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "chart",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "resolveTheme",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "categoryAxis",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "valueAxis",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "compactGrid",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "shadcnTooltip",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "shadcnLegend",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "areaGradient",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "colorWithOpacity",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "registerChart",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/echarts.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-lib-echarts"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/icon-nodes.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/stylex-lib-icon-nodes"
+    },
+    {
+      "exports": [
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "icon",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowLeft",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "banknote",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "mousePointer2",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "userCheck",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowRight",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowUpRight",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "badgeCheck",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "bookmark",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowDown",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowUp",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "calendarIcon",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "calendarDays",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "check",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronDown",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronLeft",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronRight",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronUp",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronsUpDown",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "circleCheck",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "circleIcon",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "clock",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "codeXml",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "gripVertical",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "info",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "eye",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "eyeOff",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "filter",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "loaderCircle",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "menu",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "house",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "folder",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chartBarStacked",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "settings",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "users",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "layoutDashboard",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "minus",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "moreHorizontal",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "moveHorizontal",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "octagonX",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "panelLeft",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "plus",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "pin",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "rotateCcw",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "search",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "triangleAlert",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "x",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "hasIcon",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/icon.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-lib-icon"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/sidebar-state.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/stylex-lib-sidebar-state"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/utils.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/stylex-lib-utils"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "card"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardHeader"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardTitle"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardDescription"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardAction"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardContent"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/stylex/card.ts",
+          "name": "cardFooter"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/card.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-card"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.chart",
+          "file": "src/ui/stylex/chart.ts",
+          "name": "eChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/stylex/chart.ts",
+          "name": "chartContainer"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/stylex/chart.ts",
+          "name": "chartLegend"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/stylex/chart.ts",
+          "name": "chartTooltipContent"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/stylex/chart.ts",
+          "name": "barChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/stylex/chart.ts",
+          "name": "areaChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/stylex/chart.ts",
+          "name": "interactiveAreaChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/stylex/chart.ts",
+          "name": "donutChart"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/chart.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-chart"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/complex-tokens.stylex.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-complex-tokens.stylex"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/contracts.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-contracts"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/foundations-tokens.stylex.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-foundations-tokens.stylex"
+    },
+    {
+      "exports": [
+        {
+          "contract": "typography.heading",
+          "file": "src/ui/stylex/heading.ts",
+          "name": "heading"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/heading.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-heading"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.echarts",
+          "file": "src/ui/stylex/integrations/echarts.ts",
+          "name": "eChart"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/integrations/echarts.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-integrations-echarts"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/interaction-tokens.stylex.const.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-interaction-tokens.stylex.const"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/reset.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-reset"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/sidebar.markers.stylex.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-sidebar.markers.stylex"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarProvider"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebar"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarTrigger"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarRail"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarInset"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarInput"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarHeader"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarFooter"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarSeparator"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarContent"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarGroup"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarGroupLabel"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarGroupAction"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarGroupContent"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarMenu"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarMenuItem"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarMenuButton"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarMenuLabel"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarMenuAction"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarMenuBadge"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarMenuSkeleton"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarMenuSub"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarMenuSubItem"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/stylex/sidebar.ts",
+          "name": "sidebarMenuSubButton"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/sidebar.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-sidebar"
+    },
+    {
+      "exports": [
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stylex/stack.ts",
+          "name": "stack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stylex/stack.ts",
+          "name": "hStack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stylex/stack.ts",
+          "name": "vStack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stylex/stack.ts",
+          "name": "stackItem"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/stack.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stack"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.stat",
+          "file": "src/ui/stylex/stat.ts",
+          "name": "stat"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/stat.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-stat"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/style.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-style"
+    },
+    {
+      "exports": [
+        {
+          "contract": "data.table",
+          "file": "src/ui/stylex/table.ts",
+          "name": "table"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/stylex/table.ts",
+          "name": "tableHeader"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/stylex/table.ts",
+          "name": "tableBody"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/stylex/table.ts",
+          "name": "tableFooter"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/stylex/table.ts",
+          "name": "tableRow"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/stylex/table.ts",
+          "name": "tableHead"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/stylex/table.ts",
+          "name": "tableCell"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/stylex/table.ts",
+          "name": "tableCaption"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/table.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-table"
+    },
+    {
+      "exports": [
+        {
+          "contract": "typography.text",
+          "file": "src/ui/stylex/text.ts",
+          "name": "text"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/text.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-text"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/stylex/tokens.stylex.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/stylex-tokens.stylex"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/entry.ts",
+          "rawRendering": false,
+          "role": "setup"
+        }
+      ],
+      "id": "crease/setup-src-entry"
+    }
+  ],
+  "policyVersion": "crease-default-v1",
+  "renderer": "stylex",
+  "schemaVersion": 1
+}

@@ -19,9 +19,12 @@
     "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
+    "@creaseui/lint": "file:vendor/creaseui-lint-0.1.0.tgz",
     "@foldkit/vite-plugin": "0.25.0",
     "@stylexjs/unplugin": "^0.19.1",
+    "eslint": "^10.12.0",
     "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2",
     "vite": "^8.0.16"
   }
 }
