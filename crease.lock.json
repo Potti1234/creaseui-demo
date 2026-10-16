@@ -540,6 +540,28 @@
     {
       "exports": [
         {
+          "contract": "composition.grid",
+          "file": "src/ui/stylex/grid.ts",
+          "name": "grid"
+        },
+        {
+          "contract": "composition.grid",
+          "file": "src/ui/stylex/grid.ts",
+          "name": "gridSpan"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stylex/grid.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stylex-grid"
+    },
+    {
+      "exports": [
+        {
           "contract": "typography.heading",
           "file": "src/ui/stylex/heading.ts",
           "name": "heading"
