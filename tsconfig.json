@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@pleat/core": [
+        "./src/lib/pleat/core/src/index.ts"
+      ],
+      "@pleat/foldkit": [
+        "./src/lib/pleat/foldkit/src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}
