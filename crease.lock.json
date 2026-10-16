@@ -948,6 +948,23 @@
     {
       "exports": [
         {
+          "contract": "composition.section",
+          "file": "src/ui/pleat/section.ts",
+          "name": "section"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/pleat/section.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-pleat-section"
+    },
+    {
+      "exports": [
+        {
           "contract": "composition.stack",
           "file": "src/ui/pleat/stack.ts",
           "name": "stack"
