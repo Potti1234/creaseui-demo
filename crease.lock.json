@@ -553,6 +553,28 @@
     {
       "exports": [
         {
+          "contract": "composition.grid",
+          "file": "src/ui/grid.ts",
+          "name": "grid"
+        },
+        {
+          "contract": "composition.grid",
+          "file": "src/ui/grid.ts",
+          "name": "gridSpan"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/grid.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/grid"
+    },
+    {
+      "exports": [
+        {
           "contract": "typography.heading",
           "file": "src/ui/heading.ts",
           "name": "heading"
@@ -566,6 +588,23 @@
         }
       ],
       "id": "crease/heading"
+    },
+    {
+      "exports": [
+        {
+          "contract": "composition.section",
+          "file": "src/ui/section.ts",
+          "name": "section"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/section.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/section"
     },
     {
       "exports": [
