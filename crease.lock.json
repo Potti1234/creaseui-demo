@@ -1,0 +1,1070 @@
+{
+  "artifacts": [
+    {
+      "exports": [
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "chart",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "resolveTheme",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "categoryAxis",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "valueAxis",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "compactGrid",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "shadcnTooltip",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "shadcnLegend",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "areaGradient",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "colorWithOpacity",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.echarts",
+          "file": "src/lib/echarts.ts",
+          "name": "registerChart",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/echarts.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-lib-echarts"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/icon-nodes.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-icon-nodes"
+    },
+    {
+      "exports": [
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "icon",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowLeft",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "banknote",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "mousePointer2",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "userCheck",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowRight",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowUpRight",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "badgeCheck",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "bookmark",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowDown",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowUp",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "calendarIcon",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "calendarDays",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "check",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronDown",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronLeft",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronRight",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronUp",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronsUpDown",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "circleCheck",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "circleIcon",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "clock",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "codeXml",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "gripVertical",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "info",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "eye",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "eyeOff",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "filter",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "loaderCircle",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "menu",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "house",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "folder",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chartBarStacked",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "settings",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "users",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "layoutDashboard",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "minus",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "moreHorizontal",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "moveHorizontal",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "octagonX",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "panelLeft",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "plus",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "pin",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "rotateCcw",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "search",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "triangleAlert",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "x",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "hasIcon",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/icon.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-lib-icon"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/layout-properties.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-layout-properties"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/calc.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-calc"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/color.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-color"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/declarations.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-declarations"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/global.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-global"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/hash.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-hash"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/index.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-index"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/property.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-property"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/recipe.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-recipe"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/sheet.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-sheet"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/style.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-style"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/theme.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-theme"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/token.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-token"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/var.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-var"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/core/src/when.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-core-src-when"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/pleat/foldkit/src/index.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-pleat-foldkit-src-index"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/sidebar-state.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-sidebar-state"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/utils.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/pleat-lib-utils"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.card",
+          "file": "src/ui/pleat/card.ts",
+          "name": "card"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/pleat/card.ts",
+          "name": "cardHeader"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/pleat/card.ts",
+          "name": "cardTitle"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/pleat/card.ts",
+          "name": "cardDescription"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/pleat/card.ts",
+          "name": "cardAction"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/pleat/card.ts",
+          "name": "cardContent"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/pleat/card.ts",
+          "name": "cardFooter"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/pleat/card.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-card"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.chart",
+          "file": "src/ui/pleat/chart.ts",
+          "name": "eChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/pleat/chart.ts",
+          "name": "chartContainer"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/pleat/chart.ts",
+          "name": "chartLegend"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/pleat/chart.ts",
+          "name": "chartTooltipContent"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/pleat/chart.ts",
+          "name": "barChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/pleat/chart.ts",
+          "name": "areaChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/pleat/chart.ts",
+          "name": "interactiveAreaChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/pleat/chart.ts",
+          "name": "donutChart"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/pleat/chart.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-chart"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/pleat/complex-tokens.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/pleat-complex-tokens"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/pleat/contracts.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/pleat-contracts"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/pleat/foundations-tokens.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/pleat-foundations-tokens"
+    },
+    {
+      "exports": [
+        {
+          "contract": "typography.heading",
+          "file": "src/ui/pleat/heading.ts",
+          "name": "heading"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/pleat/heading.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-heading"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.echarts",
+          "file": "src/ui/pleat/integrations/echarts.ts",
+          "name": "eChart"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/pleat/integrations/echarts.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-integrations-echarts"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/pleat/interaction-tokens.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/pleat-interaction-tokens"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/pleat/reset.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/pleat-reset"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/pleat/sidebar.markers.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/pleat-sidebar.markers"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarProvider"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebar"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarTrigger"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarRail"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarInset"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarInput"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarHeader"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarFooter"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarSeparator"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarContent"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarGroup"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarGroupLabel"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarGroupAction"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarGroupContent"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarMenu"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarMenuItem"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarMenuButton"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarMenuLabel"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarMenuAction"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarMenuBadge"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarMenuSkeleton"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarMenuSub"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarMenuSubItem"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/pleat/sidebar.ts",
+          "name": "sidebarMenuSubButton"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/pleat/sidebar.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-sidebar"
+    },
+    {
+      "exports": [
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/pleat/stack.ts",
+          "name": "stack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/pleat/stack.ts",
+          "name": "hStack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/pleat/stack.ts",
+          "name": "vStack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/pleat/stack.ts",
+          "name": "stackItem"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/pleat/stack.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-stack"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.stat",
+          "file": "src/ui/pleat/stat.ts",
+          "name": "stat"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/pleat/stat.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-stat"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/pleat/style.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/pleat-style"
+    },
+    {
+      "exports": [
+        {
+          "contract": "data.table",
+          "file": "src/ui/pleat/table.ts",
+          "name": "table"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/pleat/table.ts",
+          "name": "tableHeader"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/pleat/table.ts",
+          "name": "tableBody"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/pleat/table.ts",
+          "name": "tableFooter"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/pleat/table.ts",
+          "name": "tableRow"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/pleat/table.ts",
+          "name": "tableHead"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/pleat/table.ts",
+          "name": "tableCell"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/pleat/table.ts",
+          "name": "tableCaption"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/pleat/table.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-table"
+    },
+    {
+      "exports": [
+        {
+          "contract": "typography.text",
+          "file": "src/ui/pleat/text.ts",
+          "name": "text"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/pleat/text.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/pleat-text"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/ui/pleat/tokens.ts",
+          "rawRendering": false,
+          "role": "theme"
+        }
+      ],
+      "id": "crease/pleat-tokens"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/entry.ts",
+          "rawRendering": false,
+          "role": "setup"
+        }
+      ],
+      "id": "crease/setup-src-entry"
+    }
+  ],
+  "policyVersion": "crease-default-v1",
+  "renderer": "pleat",
+  "schemaVersion": 1
+}
