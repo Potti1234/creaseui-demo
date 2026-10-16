@@ -1,0 +1,390 @@
+{
+  "artifacts": [
+    {
+      "exports": [
+        {
+          "contract": "control.button",
+          "file": "src/ui/button.ts",
+          "name": "button"
+        },
+        {
+          "contract": "control.button",
+          "file": "src/ui/button.ts",
+          "name": "buttonLink"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/button.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/button"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.card",
+          "file": "src/ui/card.ts",
+          "name": "card"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/card.ts",
+          "name": "cardHeader"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/card.ts",
+          "name": "cardTitle"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/card.ts",
+          "name": "cardDescription"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/card.ts",
+          "name": "cardAction"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/card.ts",
+          "name": "cardContent"
+        },
+        {
+          "contract": "component.card",
+          "file": "src/ui/card.ts",
+          "name": "cardFooter"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/card.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/card"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.chart",
+          "file": "src/ui/chart.ts",
+          "name": "eChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/chart.ts",
+          "name": "chartContainer"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/chart.ts",
+          "name": "chartLegend"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/chart.ts",
+          "name": "chartTooltipContent"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/chart.ts",
+          "name": "barChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/chart.ts",
+          "name": "areaChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/chart.ts",
+          "name": "interactiveAreaChart"
+        },
+        {
+          "contract": "component.chart",
+          "file": "src/ui/chart.ts",
+          "name": "donutChart"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/chart.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/chart"
+    },
+    {
+      "exports": [
+        {
+          "contract": "typography.heading",
+          "file": "src/ui/heading.ts",
+          "name": "heading"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/heading.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/heading"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarProvider"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebar"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarTrigger"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarRail"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarInset"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarInput"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarHeader"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarFooter"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarSeparator"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarContent"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarGroup"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarGroupLabel"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarGroupAction"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarGroupContent"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenu"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuItem"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuButton"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuAction"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuBadge"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuSkeleton"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuSub"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuSubItem"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuSubButton"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/sidebar.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/sidebar"
+    },
+    {
+      "exports": [
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stack.ts",
+          "name": "stack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stack.ts",
+          "name": "hStack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stack.ts",
+          "name": "vStack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stack.ts",
+          "name": "stackItem"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stack.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stack"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.stat",
+          "file": "src/ui/stat.ts",
+          "name": "stat"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stat.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stat"
+    },
+    {
+      "exports": [
+        {
+          "contract": "data.table",
+          "file": "src/ui/table.ts",
+          "name": "table"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/table.ts",
+          "name": "tableHeader"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/table.ts",
+          "name": "tableBody"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/table.ts",
+          "name": "tableFooter"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/table.ts",
+          "name": "tableRow"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/table.ts",
+          "name": "tableHead"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/table.ts",
+          "name": "tableCell"
+        },
+        {
+          "contract": "data.table",
+          "file": "src/ui/table.ts",
+          "name": "tableCaption"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/table.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/table"
+    },
+    {
+      "exports": [
+        {
+          "contract": "typography.text",
+          "file": "src/ui/text.ts",
+          "name": "text"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/text.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/text"
+    }
+  ],
+  "policyVersion": "crease-default-v1",
+  "renderer": "tailwind",
+  "schemaVersion": 1
+}
