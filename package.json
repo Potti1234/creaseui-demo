@@ -10,15 +10,19 @@
   },
   "dependencies": {
     "@effect/platform-browser": "4.0.0-rc.117",
+    "@foldkit/ui": "0.164.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "echarts": "^6.1.0",
     "effect": "4.0.0-rc.117",
     "foldkit": "0.164.0",
-    "@foldkit/ui": "0.164.0",
+    "tailwind-merge": "^3.7.0",
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
     "@foldkit/vite-plugin": "0.25.0",
+    "@tailwindcss/vite": "^4.3.1",
     "typescript": "^6.0.3",
-    "vite": "^8.0.16",
-    "@tailwindcss/vite": "^4.3.1"
+    "vite": "^8.0.16"
   }
 }
