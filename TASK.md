@@ -1,0 +1,1 @@
+Build a clean, consistent dashboard using Foldkit and Vite, Tailwind and CreaseUI components. Include a sidebar, a table and a chart. Use realistic sample data and working interactions. Install and use CreaseUI's lint rules and keep the application lint clean. Make it run locally.
