@@ -16,8 +16,11 @@ export const badgeVariants = cva(
           'bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80',
         destructive:
           'bg-destructive/10 text-destructive focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:focus-visible:ring-destructive/40 [a]:hover:bg-destructive/20',
+        /* Crease Tasks replaces crease's outline look: outline badges are
+           issue labels, which are metadata, so they use the quiet secondary
+           text style (decision D2) and are 11px, one step below the row text. */
         outline:
-          'border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground',
+          'border-border text-[11px] text-muted-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground',
         ghost:
           'hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50',
         link: 'text-primary underline-offset-4 hover:underline',
