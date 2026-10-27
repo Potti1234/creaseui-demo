@@ -445,7 +445,12 @@
         {
           "contract": "component.badge",
           "file": "src/ui/badge.ts",
-          "name": "badge"
+          "name": "badge",
+          "variants": {
+            "variant": [
+              "outline"
+            ]
+          }
         }
       ],
       "files": [
@@ -861,7 +866,22 @@
         {
           "contract": "typography.text",
           "file": "src/ui/text.ts",
-          "name": "text"
+          "name": "text",
+          "variants": {
+            "size": [
+              "xsm",
+              "sm"
+            ],
+            "color": [
+              "primary",
+              "secondary"
+            ],
+            "weight": [
+              "normal",
+              "medium",
+              "semibold"
+            ]
+          }
         }
       ],
       "files": [

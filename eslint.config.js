@@ -1,6 +1,8 @@
 import { fileURLToPath } from 'node:url'
 import { creaseui } from '@creaseui/lint'
 
+import { productPolicy } from './policy/product-policy.js'
+
 export default [
   // Stylesheets are checked by `creaseui-lint css`, not by ESLint.
   { ignores: ['**/*.css'] },
@@ -35,20 +37,6 @@ export default [
       },
     ],
   }),
-  // Product rule: issue rows and property menus come from the patterns in
-  // src/design (decisions D3 and D7), never from the components they use.
-  {
-    files: ['src/features/**/*.ts', 'src/view.ts'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          paths: [
-            { name: '@/ui/item', message: 'List issues with issueCollection or issueRow from src/design (decision D3).' },
-            { name: '@/ui/dropdown-menu', message: 'Change issue properties with propertyPicker from src/design (decision D7).' },
-          ],
-        },
-      ],
-    },
-  },
+  // The product's own rules: policy/product-policy.js.
+  ...productPolicy,
 ]

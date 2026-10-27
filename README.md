@@ -19,6 +19,7 @@ git diff chapter-04 chapter-05
 | `chapter-07` | Compose named product patterns |
 | `chapter-08` | Model saving, validation and workflows |
 | `chapter-09` | Verify the whole system |
+| `chapter-10` | Configure the product policy |
 
 ## Run
 

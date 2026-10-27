@@ -4,7 +4,7 @@ Crease Tasks is a Foldkit app built on crease/ui components (Tailwind). Before w
 
 ## Two kinds of change
 
-**A feature change** adds or changes behaviour in `src/features`, `src/view.ts`, `src/model.ts` or `src/domain.ts`. It composes the public exports of `src/ui` and passes them placement only (margin, width, alignment). It does not touch `src/ui`, `src/lib`, `src/theme`, `crease.lock.json`, `eslint.config.js` or the scripts in `package.json`.
+**A feature change** adds or changes behaviour in `src/features`, `src/view.ts`, `src/model.ts` or `src/domain.ts`. It composes the public exports of `src/ui` and passes them placement only (margin, width, alignment). It does not touch `src/ui`, `src/lib`, `src/theme`, `crease.lock.json`, `eslint.config.js`, `policy/` or the scripts in `package.json`.
 
 **A design-system change** edits components, the theme, the receipt or the lint configuration. It names the decision it implements, updates `crease.lock.json` in the same commit when a component's variants change, and adds a record in `design-system/changes/`.
 
