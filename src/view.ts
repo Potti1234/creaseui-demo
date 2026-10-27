@@ -4,7 +4,10 @@ import { ME } from './domain'
 import { allIssuesView } from './features/issues'
 import { myIssuesView } from './features/my-issues'
 import { searchView } from './features/search'
-import { type Message, Message as M, type Model } from './model'
+import { issueComposer } from './design/issue-composer'
+import { saveNotice } from './design/save-notice'
+import { type Message, Message as M, type Model, pickersOf } from './model'
+import { button } from '@/ui/button'
 import { heading } from '@/ui/heading'
 import { icon } from '@/ui/icon'
 import { input } from '@/ui/input'
@@ -52,6 +55,22 @@ const navItem = (
     },
     h,
   )
+
+const notices = (model: Model, h: HtmlBuilder<Message>): ReadonlyArray<Html> =>
+  model.save === 'failed'
+    ? [
+        saveNotice(
+          {
+            title: 'Your last change was not saved',
+            description: 'The browser refused to store it. Your changes are still on this page; they are lost if you reload before a save succeeds.',
+            onRetry: M.RetriedSave(),
+          },
+          h,
+        ),
+      ]
+    : model.loadNotice === null
+      ? []
+      : [saveNotice({ title: 'Saved issues could not be read', description: model.loadNotice }, h)]
 
 const title = (model: Model): string =>
   model.query !== '' ? 'Search' : model.view === 'mine' ? 'My issues' : 'All issues'
@@ -116,15 +135,35 @@ export const view = (model: Model, h: HtmlBuilder<Message>): Html =>
                   paddingBlock: 2,
                   children: [
                     heading({ level: 4, accessibilityLevel: 1, children: [title(model)] }, h),
-                    input(
+                    stack(
                       {
-                        id: 'search',
-                        value: model.query,
-                        onInput: query => M.ChangedQuery({ query }),
-                        placeholder: 'Search issues',
-                        ariaLabel: 'Search issues',
-                        role: 'searchbox',
-                        class: 'w-56',
+                        direction: 'horizontal',
+                        align: 'center',
+                        gap: 2,
+                        children: [
+                          input(
+                            {
+                              id: 'search',
+                              value: model.query,
+                              onInput: query => M.ChangedQuery({ query }),
+                              placeholder: 'Search issues',
+                              ariaLabel: 'Search issues',
+                              role: 'searchbox',
+                              class: 'w-56',
+                            },
+                            h,
+                          ),
+                          // The page's one main action (D4, D6).
+                          button(
+                            {
+                              id: 'new-issue',
+                              intent: 'primary',
+                              onClick: M.ClickedNewIssue(),
+                              children: [model.draft.title.trim() === '' ? 'New issue' : 'New issue (draft)'],
+                            },
+                            h,
+                          ),
+                        ],
                       },
                       h,
                     ),
@@ -132,11 +171,25 @@ export const view = (model: Model, h: HtmlBuilder<Message>): Html =>
                 },
                 h,
               ),
+              ...notices(model, h),
               model.query !== ''
                 ? searchView(model, h)
                 : model.view === 'mine'
                   ? myIssuesView(model, h)
                   : allIssuesView(model, h),
+              issueComposer(
+                {
+                  dialog: model.composer,
+                  toDialogMessage: message => M.GotComposerMessage({ message }),
+                  draft: model.draft,
+                  titleError: model.titleError,
+                  onTitle: title => M.ChangedDraftTitle({ title }),
+                  onCreate: M.SubmittedComposer(),
+                  onCancel: M.CancelledComposer(),
+                  pickers: pickersOf(model),
+                },
+                h,
+              ),
             ],
           },
           h,

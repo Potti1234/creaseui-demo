@@ -1,9 +1,13 @@
-import { Match as M, Schema as S } from 'effect'
-import { Command, type Update } from 'foldkit'
+import { Effect, Match as M, Schema as S } from 'effect'
+import { Command, Dom, Subscription, type Update } from 'foldkit'
 import { defineMessageUnion } from 'foldkit/message'
+import type * as KeyValueStore from 'effect/unstable/persistence/KeyValueStore'
 
-import { Issue, SEED, Status } from './domain'
+import { Issue, Status } from './domain'
+import { DRAFT_ID, TITLE_ID, emptyDraft, initComposer, validateTitle } from './design/issue-composer'
 import { type PickerContext, type PickerField, closedMenu, withProperty } from './design/property-picker'
+import { type Flags, SaveIssues, SaveMessage } from './storage'
+import * as Dialog from '@/ui/dialog'
 import * as DropdownMenu from '@/ui/dropdown-menu'
 
 export const View = S.Literals(['all', 'mine'])
@@ -15,14 +19,24 @@ export type Sort = typeof Sort.Type
 /** The one property menu that is open, or was last open. */
 export const OpenPicker = S.Struct({ key: S.String, menu: DropdownMenu.Model })
 
+export const SaveState = S.Literals(['saved', 'failed'])
+export type SaveState = typeof SaveState.Type
+
 export const Model = S.Struct({
   issues: S.Array(Issue),
+  nextNumber: S.Number,
   view: View,
   query: S.String,
   isGrouped: S.Boolean,
   sort: Sort,
   collapsed: S.Array(Status),
   picker: S.NullOr(OpenPicker),
+  composer: Dialog.Model,
+  draft: Issue,
+  titleError: S.NullOr(S.String),
+  save: SaveState,
+  /** Shown once at startup when saved data could not be read. */
+  loadNotice: S.NullOr(S.String),
 })
 export type Model = typeof Model.Type
 
@@ -34,18 +48,37 @@ export const Message = defineMessageUnion({
   ToggledSort: {},
   ToggledGroup: { status: Status },
   GotPickerMessage: { key: S.String, message: DropdownMenu.Message },
+  ClickedNewIssue: {},
+  GotComposerMessage: { message: Dialog.Message },
+  ChangedDraftTitle: { title: S.String },
+  SubmittedComposer: {},
+  CancelledComposer: {},
+  CompletedFocusTitle: {},
+  SucceededSave: {},
+  FailedSave: { reason: S.String },
+  RetriedSave: {},
+  DismissedLoadNotice: {},
 })
 export type Message = typeof Message.Type
 
-export const init = (): Update.Return<Model, Message> => ({
+/** update's result; saving needs the KeyValueStore service. */
+type Return = Update.Return<Model, Message, KeyValueStore.KeyValueStore>
+
+export const init = (flags: Flags): Update.Return<Model, Message> => ({
   model: {
-    issues: SEED,
+    issues: flags.issues,
+    nextNumber: flags.nextNumber,
     view: 'all',
     query: '',
     isGrouped: true,
     sort: 'priority',
     collapsed: [],
     picker: null,
+    composer: initComposer(),
+    draft: emptyDraft,
+    titleError: null,
+    save: 'saved',
+    loadNotice: flags.notice,
   },
 })
 
@@ -67,7 +100,37 @@ export const pickersOf = (model: Model): PickerContext<Message> => ({
   toParentMessage: key => message => Message.GotPickerMessage({ key, message }),
 })
 
-export const update = (model: Model, message: Message): Update.Return<Model, Message> =>
+const save = (model: Model) =>
+  Command.mapMessages([SaveIssues({ issues: model.issues, nextNumber: model.nextNumber })], message =>
+    message._tag === 'SucceededSave' ? Message.SucceededSave() : Message.FailedSave({ reason: message.reason }),
+  )[0]!
+
+const FocusTitle = Command.define('FocusComposerTitle', {
+  messages: [Message.CompletedFocusTitle],
+  execute: Dom.focus(`#${TITLE_ID}`).pipe(Effect.ignore, Effect.as(Message.CompletedFocusTitle())),
+})
+
+const toComposer = (commands: ReadonlyArray<Command.Command<Dialog.Message>> | undefined) =>
+  Command.mapMessages(commands, message => Message.GotComposerMessage({ message }))
+
+const submit = (model: Model): Return => {
+  if (!model.composer.isOpen) return { model }
+  const checked = validateTitle(model.draft.title)
+  if (!checked.ok) return { model: { ...model, titleError: checked.error }, commands: [FocusTitle()] }
+  const created: Issue = { ...model.draft, id: `CRE-${model.nextNumber}`, title: checked.title, updated: 'Just now' }
+  const closed = Dialog.close(model.composer)
+  const next: Model = {
+    ...model,
+    issues: [created, ...model.issues],
+    nextNumber: model.nextNumber + 1,
+    draft: emptyDraft,
+    titleError: null,
+    composer: closed.model,
+  }
+  return { model: next, commands: [...toComposer(closed.commands), save(next)] }
+}
+
+export const update = (model: Model, message: Message): Return =>
   M.value(message).pipe(
     M.tagsExhaustive({
       SelectedView: ({ view }) => ({ model: { ...model, view, query: '' } }),
@@ -90,14 +153,56 @@ export const update = (model: Model, message: Message): Update.Return<Model, Mes
         const result = DropdownMenu.update(menuOf(model, key), menuMessage)
         const target = parseKey(key)
         const chosen = result.outMessage
-        const issues =
-          chosen === undefined || target === undefined
-            ? model.issues
-            : model.issues.map(issue => (issue.id === target.id ? withProperty(issue, target.field, chosen.value) : issue))
-        return {
-          model: { ...model, issues, picker: { key, menu: result.model } },
-          commands: Command.mapMessages(result.commands, message => Message.GotPickerMessage({ key, message })),
+        const menuCommands = Command.mapMessages(result.commands, inner => Message.GotPickerMessage({ key, message: inner }))
+        const withMenu: Model = { ...model, picker: { key, menu: result.model } }
+        if (chosen === undefined || target === undefined) return { model: withMenu, commands: menuCommands }
+        if (target.id === DRAFT_ID)
+          return { model: { ...withMenu, draft: withProperty(model.draft, target.field, chosen.value) }, commands: menuCommands }
+        const next: Model = {
+          ...withMenu,
+          issues: model.issues.map(issue => (issue.id === target.id ? withProperty(issue, target.field, chosen.value) : issue)),
         }
+        return { model: next, commands: [...menuCommands, save(next)] }
       },
+      ClickedNewIssue: () => {
+        const opened = Dialog.open(model.composer)
+        return { model: { ...model, composer: opened.model }, commands: toComposer(opened.commands) }
+      },
+      GotComposerMessage: ({ message: dialogMessage }) => {
+        const result = Dialog.update(model.composer, dialogMessage)
+        return { model: { ...model, composer: result.model }, commands: toComposer(result.commands) }
+      },
+      ChangedDraftTitle: ({ title }) => ({
+        model: {
+          ...model,
+          draft: { ...model.draft, title },
+          titleError: model.titleError === null || !validateTitle(title).ok ? model.titleError : null,
+        },
+      }),
+      SubmittedComposer: () => submit(model),
+      CancelledComposer: () => {
+        const closed = Dialog.close(model.composer)
+        return { model: { ...model, composer: closed.model }, commands: toComposer(closed.commands) }
+      },
+      CompletedFocusTitle: () => ({ model }),
+      SucceededSave: () => ({ model: { ...model, save: 'saved' as const, loadNotice: null } }),
+      FailedSave: () => ({ model: { ...model, save: 'failed' as const } }),
+      RetriedSave: () => ({ model, commands: [save(model)] }),
+      DismissedLoadNotice: () => ({ model: { ...model, loadNotice: null } }),
     }),
   )
+
+export const subscriptions = Subscription.make<Model, Message>()(entry => ({
+  composerShortcut: entry(
+    { isComposerOpen: S.Boolean },
+    {
+      modelToDependencies: model => ({ isComposerOpen: model.composer.isOpen }),
+      dependenciesToStream: ({ isComposerOpen }) =>
+        Subscription.keyBindings<Message>({
+          bindings: [{ keys: 'Mod+Enter', isEnabled: isComposerOpen, whileTyping: 'Allow', mapEvent: () => Message.SubmittedComposer() }],
+        }),
+    },
+  ),
+}))
+
+export { SaveMessage }
