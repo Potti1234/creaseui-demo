@@ -10,7 +10,7 @@ import { type Flags, SaveIssues, SaveMessage } from './storage'
 import * as Dialog from '@/ui/dialog'
 import * as DropdownMenu from '@/ui/dropdown-menu'
 
-export const View = S.Literals(['all', 'mine'])
+export const View = S.Literals(['all', 'mine', 'bugs'])
 export type View = typeof View.Type
 
 export const Sort = S.Literals(['priority', 'newest'])

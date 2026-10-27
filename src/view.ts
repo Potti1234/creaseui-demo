@@ -1,6 +1,7 @@
 import type { Html, HtmlBuilder } from 'foldkit/html'
 
-import { ME } from './domain'
+import { type Issue, ME, isOpen, isOpenBug } from './domain'
+import { bugsView } from './features/bugs'
 import { allIssuesView } from './features/issues'
 import { myIssuesView } from './features/my-issues'
 import { searchView } from './features/search'
@@ -27,16 +28,20 @@ import {
 import { stack } from '@/ui/stack'
 import { text } from '@/ui/text'
 
-const openCount = (model: Model, mine: boolean): number =>
-  model.issues.filter(
-    issue => issue.status !== 'done' && (!mine || issue.assigneeId === ME),
-  ).length
+/* What each sidebar entry counts: the open issues its view lists. */
+const COUNTED: Readonly<Record<Model['view'], (issue: Issue) => boolean>> = {
+  all: isOpen,
+  mine: issue => isOpen(issue) && issue.assigneeId === ME,
+  bugs: isOpenBug,
+}
+
+const openCount = (model: Model, view: Model['view']): number => model.issues.filter(COUNTED[view]).length
 
 const navItem = (
   model: Model,
   view: Model['view'],
   label: string,
-  iconName: 'list' | 'circle-user',
+  iconName: 'list' | 'circle-user' | 'bug',
   h: HtmlBuilder<Message>,
 ): Html =>
   sidebarMenuItem(
@@ -50,7 +55,7 @@ const navItem = (
           },
           h,
         ),
-        sidebarMenuBadge({ children: [String(openCount(model, view === 'mine'))] }, h),
+        sidebarMenuBadge({ children: [String(openCount(model, view))] }, h),
       ],
     },
     h,
@@ -72,8 +77,25 @@ const notices = (model: Model, h: HtmlBuilder<Message>): ReadonlyArray<Html> =>
       ? []
       : [saveNotice({ title: 'Saved issues could not be read', description: model.loadNotice }, h)]
 
-const title = (model: Model): string =>
-  model.query !== '' ? 'Search' : model.view === 'mine' ? 'My issues' : 'All issues'
+const VIEW_TITLE: Readonly<Record<Model['view'], string>> = {
+  all: 'All issues',
+  mine: 'My issues',
+  bugs: 'Bugs',
+}
+
+const title = (model: Model): string => (model.query !== '' ? 'Search' : VIEW_TITLE[model.view])
+
+const currentView = (model: Model, h: HtmlBuilder<Message>): Html => {
+  if (model.query !== '') return searchView(model, h)
+  switch (model.view) {
+    case 'all':
+      return allIssuesView(model, h)
+    case 'mine':
+      return myIssuesView(model, h)
+    case 'bugs':
+      return bugsView(model, h)
+  }
+}
 
 export const view = (model: Model, h: HtmlBuilder<Message>): Html =>
   sidebarProvider(
@@ -102,6 +124,7 @@ export const view = (model: Model, h: HtmlBuilder<Message>): Html =>
                               children: [
                                 navItem(model, 'all', 'All issues', 'list', h),
                                 navItem(model, 'mine', 'My issues', 'circle-user', h),
+                                navItem(model, 'bugs', 'Bugs', 'bug', h),
                               ],
                             },
                             h,
@@ -172,11 +195,7 @@ export const view = (model: Model, h: HtmlBuilder<Message>): Html =>
                 h,
               ),
               ...notices(model, h),
-              model.query !== ''
-                ? searchView(model, h)
-                : model.view === 'mine'
-                  ? myIssuesView(model, h)
-                  : allIssuesView(model, h),
+              currentView(model, h),
               issueComposer(
                 {
                   dialog: model.composer,

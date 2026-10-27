@@ -60,6 +60,15 @@ export const PEOPLE: ReadonlyArray<Person> = [
 
 export const ME = 'alex'
 
+/* The label that marks an issue as a bug. */
+export const BUG_LABEL = 'Bug'
+
+/** An issue that is not finished yet. */
+export const isOpen = (issue: Issue): boolean => issue.status !== 'done'
+
+/** An open issue labelled Bug: what the Bugs view lists and counts. */
+export const isOpenBug = (issue: Issue): boolean => isOpen(issue) && issue.labels.includes(BUG_LABEL)
+
 export const personOf = (id: string | null): Person | undefined =>
   PEOPLE.find(person => person.id === id)
 

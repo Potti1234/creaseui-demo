@@ -39,6 +39,12 @@ Navigation, toolbars and metadata stay quiet so a person scanning the list reads
 |---|---|
 | D10. Priorities are Urgent, High, Medium, Low and No priority, in that order, everywhere. Statuses are Backlog, Todo, In Progress, In Review and Done. | The domain schemas in `src/domain.ts` |
 
+## 6. A view says which issues it lists, once
+
+| Decision | Enforced by |
+|---|---|
+| D11. Which issues a view lists is a named predicate in `src/domain.ts` (`isOpen`, `isOpenBug`). The view's list and its sidebar count use the same predicate. | Review; the drift test of chapter 12 (two of three agents did this unasked) |
+
 ## How these change
 
 A decision changes in a commit that also changes its enforcing code, with the reason in the commit message. A view that needs something these decisions forbid is a design-system question first: either the decision gains a case, or the view changes.
