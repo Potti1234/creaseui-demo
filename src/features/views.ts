@@ -38,7 +38,6 @@ export const savedView = (model: Model, saved: SavedView, h: HtmlBuilder<Message
   const issues = model.issues.filter(saved.matches)
   return issueCollection(
     {
-      controls: [],
       body:
         issues.length === 0
           ? { kind: 'empty', title: `No issues in ${saved.label}`, description: 'Issues show up here when they match this view.' }

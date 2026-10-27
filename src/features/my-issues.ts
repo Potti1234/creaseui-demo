@@ -3,7 +3,6 @@ import type { Html, HtmlBuilder } from 'foldkit/html'
 import { type Issue, ME, PRIORITY_RANK } from '../domain'
 import { issueCollection } from '../design/issue-collection'
 import { type Message, Message as M, type Model, pickersOf } from '../model'
-import { button } from '@/ui/button'
 
 /* The signed-in person's open issues, as one list. */
 
@@ -22,12 +21,7 @@ export const myIssuesView = (model: Model, h: HtmlBuilder<Message>): Html => {
   const issues = sorted(model)
   return issueCollection(
     {
-      controls: [
-        button(
-          { onClick: M.ToggledSort(), children: [model.sort === 'priority' ? 'Sort: Priority' : 'Sort: Newest'] },
-          h,
-        ),
-      ],
+      display: [{ name: 'Order', value: model.sort === 'priority' ? 'Priority' : 'Newest', onChange: M.ToggledSort() }],
       body:
         issues.length === 0
           ? { kind: 'empty', title: 'Nothing assigned to you', description: 'Issues you are assigned to and have not finished show up here.' }

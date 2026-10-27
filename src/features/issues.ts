@@ -3,7 +3,6 @@ import type { Html, HtmlBuilder } from 'foldkit/html'
 import { type Issue, STATUSES } from '../domain'
 import { issueCollection } from '../design/issue-collection'
 import { type Message, Message as M, type Model, isBoardView, pickersOf, teamIdOf } from '../model'
-import { button } from '@/ui/button'
 
 /* All issues, or one team's. A list is grouped by status or flat; a team's
    page can also show its issues as a board. The Layout switch sends
@@ -14,12 +13,10 @@ export const allIssuesView = (model: Model, issues: ReadonlyArray<Issue>, h: Htm
   const isBoard = isBoardView(model.view)
   return issueCollection(
     {
-      controls: [
-        ...(isTeamPage ? [button({ onClick: M.ToggledLayout(), children: [isBoard ? 'Layout: Board' : 'Layout: List'] }, h)] : []),
+      display: [
+        ...(isTeamPage ? [{ name: 'Layout' as const, value: isBoard ? 'Board' : 'List', onChange: M.ToggledLayout() }] : []),
         // A board always has one column per status; grouping is a list's choice.
-        ...(isBoard
-          ? []
-          : [button({ onClick: M.ToggledGrouping(), children: [model.isGrouped ? 'Grouped by status' : 'Not grouped'] }, h)]),
+        ...(isBoard ? [] : [{ name: 'Grouping' as const, value: model.isGrouped ? 'Status' : 'None', onChange: M.ToggledGrouping() }]),
       ],
       body: isBoard
         ? { kind: 'board', issues }
