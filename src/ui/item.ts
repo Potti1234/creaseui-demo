@@ -31,10 +31,17 @@ export const itemVariants = cva(
         sm: 'gap-2.5 px-3 py-2.5',
         xs: 'gap-2 px-2.5 py-2 in-data-[slot=dropdown-menu-content]:p-0',
       },
+      /* Crease Tasks: `inline` keeps a row on one 36px line (decision D1).
+         The title truncates, content and actions stay on the same line. */
+      layout: {
+        wrap: '',
+        inline: 'h-9 flex-nowrap py-0 whitespace-nowrap',
+      },
     },
     defaultVariants: {
       variant: 'default',
       size: 'default',
+      layout: 'wrap',
     },
   },
 )
@@ -45,6 +52,7 @@ export type ItemProps = SlotProps &
   Readonly<{
     variant?: ItemVariants['variant']
     size?: ItemVariants['size']
+    layout?: ItemVariants['layout']
     element?: 'div' | 'li' | 'article' | 'a'
     href?: string
     target?: string
@@ -54,12 +62,14 @@ export type ItemProps = SlotProps &
 export const item = <Msg>(props: ItemProps, h: HtmlBuilder<Msg>): Html => {
   const variant = props.variant ?? 'default'
   const size = props.size ?? 'default'
+  const layout = props.layout ?? 'wrap'
 
   const attributes = [
     h.DataAttribute('slot', 'item'),
     h.DataAttribute('variant', variant),
     h.DataAttribute('size', size),
-    h.Class(cn(itemVariants({ variant, size }), props.class)),
+    h.DataAttribute('layout', layout),
+    h.Class(cn(itemVariants({ variant, size, layout }), props.class)),
   ]
   const children = [...props.children]
 
@@ -127,12 +137,12 @@ export const itemMedia = <Msg>(
 
 export const itemContent = slotDiv(
   'item-content',
-  'flex flex-1 flex-col gap-1 [&+[data-slot=item-content]]:flex-none',
+  'flex flex-1 flex-col gap-1 [&+[data-slot=item-content]]:flex-none group-data-[layout=inline]/item:min-w-0 group-data-[layout=inline]/item:flex-row group-data-[layout=inline]/item:items-center group-data-[layout=inline]/item:gap-2',
 )
 
 export const itemTitle = slotDiv(
   'item-title',
-  'flex w-fit items-center gap-2 text-sm leading-snug font-medium',
+  'flex w-fit items-center gap-2 text-sm leading-snug font-medium group-data-[layout=inline]/item:block group-data-[layout=inline]/item:min-w-0 group-data-[layout=inline]/item:truncate',
 )
 
 export const itemDescription = <Msg>(
@@ -154,7 +164,10 @@ export const itemDescription = <Msg>(
   )
 }
 
-export const itemActions = slotDiv('item-actions', 'flex items-center gap-2')
+export const itemActions = slotDiv(
+  'item-actions',
+  'flex items-center gap-2 group-data-[layout=inline]/item:shrink-0',
+)
 
 export const itemHeader = slotDiv(
   'item-header',

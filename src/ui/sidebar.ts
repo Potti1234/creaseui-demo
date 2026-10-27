@@ -267,7 +267,7 @@ export const sidebarTrigger = <Msg>(
         h.Type('button'),
         h.Class(
           cn(
-            buttonVariants({ variant: 'ghost', size: 'icon' }),
+            buttonVariants({ intent: 'secondary', shape: 'icon' }),
             'size-7',
             visibilityClass,
             props.class,

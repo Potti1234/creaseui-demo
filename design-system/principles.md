@@ -8,16 +8,16 @@ Navigation, toolbars and metadata stay quiet so a person scanning the list reads
 
 | Decision | Enforced by |
 |---|---|
-| D1. An issue row has one height (36px) and never wraps. A long title is cut with an ellipsis; metadata keeps its place at the end. | The row component's variant (chapter 5) |
-| D2. Metadata in a row (identifier, labels, date, assignee) uses the small secondary text style. | The row component (chapter 5), later the `IssueRow` pattern (chapter 7) |
+| D1. An issue row has one height (36px) and never wraps. A long title is cut with an ellipsis; metadata keeps its place at the end. | `item({ size: 'xs', layout: 'inline' })` in `src/ui/item.ts`; the allowed values are in `crease.lock.json` |
+| D2. Metadata in a row (identifier, labels, date, assignee) uses the small secondary text style. | Each view for now; the `IssueRow` pattern (chapter 7) |
 | D3. Every view shows an issue with the same row: same parts, same order. | The `IssueRow` pattern (chapter 7) |
 
 ## 2. Actions are few and predictable
 
 | Decision | Enforced by |
 |---|---|
-| D4. A regular button has two intents: `primary` for the one main action of a region, `secondary` for everything else. It has one height (28px). | Button's own API (chapter 5) |
-| D5. An icon-only button always has an accessible name. | Button's types (chapter 5) |
+| D4. A regular button has two intents: `primary` for the one main action of a region, `secondary` for everything else. It has one height (28px). | `button`'s props in `src/ui/button.ts`; the allowed values are in `crease.lock.json` |
+| D5. An icon-only button always has an accessible name. | `ButtonShape` in `src/ui/button.ts`: `shape: 'icon'` requires `ariaLabel` |
 | D6. The main action of a page sits in the header's action area. | The page header pattern (chapter 7) |
 
 ## 3. Small changes happen in place

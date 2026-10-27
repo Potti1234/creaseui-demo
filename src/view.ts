@@ -58,8 +58,7 @@ const navItem = (
 const themeToggle = (model: Model, h: HtmlBuilder<Message>): Html =>
   button(
     {
-      variant: 'ghost',
-      size: 'icon-sm',
+      shape: 'icon',
       ariaLabel: model.isDark ? 'Use light theme' : 'Use dark theme',
       onClick: M.ToggledTheme(),
       children: [icon({ name: model.isDark ? 'sun' : 'moon' }, h)],
@@ -116,6 +115,9 @@ export const view = (model: Model, h: HtmlBuilder<Message>): Html =>
         ),
         sidebarInset(
           {
+            // Rows never wrap (D1), so the content area must be allowed to
+            // shrink below their single-line width.
+            class: 'min-w-0',
             children: [
               stack(
                 {
@@ -136,7 +138,7 @@ export const view = (model: Model, h: HtmlBuilder<Message>): Html =>
                         placeholder: 'Search issues',
                         ariaLabel: 'Search issues',
                         role: 'searchbox',
-                        class: 'h-7 w-56 text-xs',
+                        class: 'w-56',
                       },
                       h,
                     ),

@@ -6,7 +6,15 @@ import { priorityGlyph, statusGlyph } from './glyphs'
 import { avatar, avatarFallback } from '@/ui/avatar'
 import { badge } from '@/ui/badge'
 import { button } from '@/ui/button'
-import { item, itemActions, itemContent, itemGroup, itemMedia, itemTitle } from '@/ui/item'
+import {
+  item,
+  itemActions,
+  itemContent,
+  itemGroup,
+  itemGroupSeparator,
+  itemMedia,
+  itemTitle,
+} from '@/ui/item'
 import { stack } from '@/ui/stack'
 import { text } from '@/ui/text'
 
@@ -17,7 +25,7 @@ const row = (issue: Issue, h: HtmlBuilder<Message>): Html => {
   return item(
     {
       size: 'xs',
-      class: 'flex-nowrap rounded-none border-b border-b-border px-4',
+      layout: 'inline',
       children: [
         itemMedia({
           children: [
@@ -26,10 +34,7 @@ const row = (issue: Issue, h: HtmlBuilder<Message>): Html => {
             statusGlyph(issue.status, h),
           ],
         }, h),
-        itemContent({
-          class: 'min-w-0',
-          children: [itemTitle({ class: 'block w-full truncate', children: [issue.title] }, h)],
-        }, h),
+        itemContent({ children: [itemTitle({ children: [issue.title] }, h)] }, h),
         itemActions({
           children: [
             ...issue.labels.map(label => badge({ variant: 'outline', children: [label] }, h)),
@@ -46,6 +51,13 @@ const row = (issue: Issue, h: HtmlBuilder<Message>): Html => {
   )
 }
 
+const rows = (issues: ReadonlyArray<Issue>, h: HtmlBuilder<Message>): Html =>
+  itemGroup({
+    children: issues.flatMap((issue, index) =>
+      index === 0 ? [row(issue, h)] : [itemGroupSeparator(), row(issue, h)],
+    ),
+  }, h)
+
 const group = (label: string, issues: ReadonlyArray<Issue>, h: HtmlBuilder<Message>): Html =>
   stack({
     children: [
@@ -61,7 +73,7 @@ const group = (label: string, issues: ReadonlyArray<Issue>, h: HtmlBuilder<Messa
           text({ size: 'xsm', color: 'secondary', children: [String(issues.length)] }, h),
         ],
       }, h),
-      itemGroup({ children: issues.map(issue => row(issue, h)) }, h),
+      stack({ paddingInline: 2, children: [rows(issues, h)] }, h),
     ],
   }, h)
 
@@ -75,8 +87,6 @@ export const allIssuesView = (model: Model, h: HtmlBuilder<Message>): Html =>
         paddingBlockEnd: 2,
         children: [
           button({
-            variant: 'ghost',
-            size: 'xs',
             onClick: M.ToggledGrouping(),
             children: [model.isGrouped ? 'Grouped by status' : 'Not grouped'],
           }, h),
@@ -89,6 +99,6 @@ export const allIssuesView = (model: Model, h: HtmlBuilder<Message>): Html =>
               return issues.length === 0 ? [] : [group(STATUS_LABEL[status], issues, h)]
             }),
           }, h)
-        : itemGroup({ children: model.issues.map(issue => row(issue, h)) }, h),
+        : stack({ paddingInline: 2, children: [rows(model.issues, h)] }, h),
     ],
   }, h)
