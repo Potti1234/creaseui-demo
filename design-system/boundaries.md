@@ -6,7 +6,8 @@ Who may use what, and which check enforces it. A feature change works inside the
 
 | Layer | Files | May use | Enforced by |
 |---|---|---|---|
-| Features | `src/features/**`, `src/view.ts` | The public exports of `src/ui` (`button`, `item`, `stack`, …), the domain and the Model | `crease/no-raw-controls`, `no-raw-composition`, `no-application-styles`, `no-unapproved-renderer`, `component-contract` |
+| Features | `src/features/**`, `src/view.ts` | The patterns in `src/design`, the public exports of `src/ui` except `item` and `dropdown-menu`, the domain and the Model | `crease/no-raw-controls`, `no-raw-composition`, `no-application-styles`, `no-unapproved-renderer`, `component-contract`, `no-restricted-imports` |
+| Patterns | `src/design/**` | The public exports of `src/ui` | The same rules as features: patterns are application code that composes components |
 | Components | `src/ui/**` | Raw elements, classes, `src/lib` | Registered in `crease.lock.json` as renderers with a raw-rendering grant |
 | Implementations | `src/lib/**` | Raw elements | Their render exports are `visibility: "implementation"` in `crease.lock.json`: only components may call them |
 | Theme | `src/styles.css`, `src/theme/*.css` | Tokens; `geometry.css` also targets components by `data-slot` | `creaseui-lint css`; `geometry.css` is registered as theme CSS in `eslint.config.js` |
@@ -24,7 +25,7 @@ A feature places a component. The component decides how it looks. Checked by `cr
 
 ## Migration
 
-`src/features/issues.ts` still runs in migration mode, for its group header (`bg-muted` on a `stack`). Chapter 7 turns the header into a pattern and removes the last entry. Every other file is checked at error level.
+None since chapter 7. Every file is checked at error level and the ratchet is 0.
 
 ## Keeping the receipt in step
 

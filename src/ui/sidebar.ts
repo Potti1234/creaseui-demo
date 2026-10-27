@@ -542,6 +542,11 @@ export type SidebarMenuButtonProps<Msg> = Readonly<{
   isActive?: boolean
   variant?: SidebarMenuButtonVariants['variant']
   size?: SidebarMenuButtonVariants['size']
+  /** Crease Tasks: a nested link (a team's Issues) that stays a menu button,
+   *  so it keeps keyboard focus and `sidebarMenuBadge` alignment. crease's
+   *  `sidebarMenuSubButton` renders an anchor, which is not focusable without
+   *  an `href` (journal A0.17), and has no badge slot (A5). */
+  indent?: boolean
   tooltip?: string
   class?: string
 }>
@@ -566,6 +571,7 @@ export const sidebarMenuButton = <Msg>(
           variant: props.variant ?? 'default',
           size,
         }),
+        (props.indent ?? false) && 'pl-8',
         props.class,
       ),
     ),

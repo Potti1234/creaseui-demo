@@ -78,6 +78,9 @@ export const avatarImage = <Msg>(
 }
 
 export type AvatarFallbackProps = Readonly<{
+  /** Crease Tasks: `accent` for avatars on the sidebar, whose surface has the
+   *  same colour as the default `bg-muted` fill (journal A0.18). */
+  tone?: 'muted' | 'accent'
   class?: string
   children: ReadonlyArray<Html | string>
   model?: Model
@@ -95,6 +98,7 @@ export const avatarFallback = <Msg>(
       h.Class(
         cn(
           'absolute inset-0 flex size-full items-center justify-center rounded-full bg-muted text-sm text-foreground group-data-[size=sm]/avatar:text-xs',
+          props.tone === 'accent' && 'bg-primary/15 font-medium text-primary',
           props.class,
         ),
       ),

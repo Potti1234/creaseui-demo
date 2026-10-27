@@ -8,9 +8,9 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1 --port 4190 --strictPort",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src --max-warnings 1",
+    "lint": "eslint src --max-warnings 0",
     "doctor": "creaseui-lint doctor",
-    "check": "tsc --noEmit && eslint src --max-warnings 1 && creaseui-lint doctor && creaseui-lint css",
+    "check": "tsc --noEmit && eslint src --max-warnings 0 && creaseui-lint doctor && creaseui-lint css",
     "scope": "creaseui-lint scope --baseline HEAD"
   },
   "dependencies": {

@@ -1,6 +1,6 @@
 # Working on Crease Tasks
 
-Crease Tasks is a Foldkit app built on crease/ui components (Tailwind). Before writing UI, read `design-system/principles.md` (the product decisions) and `design-system/boundaries.md` (who may use what).
+Crease Tasks is a Foldkit app built on crease/ui components (Tailwind). Before writing UI, read `design-system/principles.md` (the product decisions), `design-system/patterns.md` (the product's patterns, and when to use each) and `design-system/boundaries.md` (who may use what). Describe a page in the pattern vocabulary first; if it does not fit, that is a design-system question.
 
 ## Two kinds of change
 

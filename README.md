@@ -16,6 +16,7 @@ git diff chapter-04 chapter-05
 | `chapter-04` | Create a coherent theme |
 | `chapter-05` | Customize a component and reduce its API |
 | `chapter-06` | Contracts and boundaries |
+| `chapter-07` | Compose named product patterns |
 
 ## Run
 
