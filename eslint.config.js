@@ -19,7 +19,7 @@ export default [
         id: 'app-entry',
         reason: 'The entry point loads the theme stylesheet and starts the runtime.',
         role: 'setup',
-        files: ['src/main.ts'],
+        files: ['src/main.ts', 'src/component-check.ts'],
       },
       {
         id: 'theme-preset',
