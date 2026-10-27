@@ -6,7 +6,7 @@ What the lint holds, in three layers. Each layer may only narrow the one before 
 |---|---|---|---|
 | crease's strict rules | `@creaseui/lint`, configured in `eslint.config.js` with `creaseui()` | Nobody in this repository. Turning a rule off is a design-system change that `npm run scope` reports | Raw elements, appearance classes and implementation imports are rejected in feature code |
 | Allowed values | `crease.lock.json`, the `variants` of each export | A design-system change, recorded in `design-system/changes/` | `button` takes `intent: primary, secondary`; `text` takes sizes `xsm, sm`; `badge` takes `outline` |
-| Product rules | `policy/product-policy.js`, imported by `eslint.config.js` | A design-system change; each rule names its decision | Feature code may not import `item`, `dropdown-menu`, `dialog` or `command` (D3, D7, D8, D9) |
+| Product rules | `policy/product-policy.js`, imported by `eslint.config.js`, with rules of our own in `tooling/eslint-plugin-crease-tasks` | A design-system change; each rule names its decision | Feature code may not import `item`, `dropdown-menu`, `dialog` or `command` (D3, D7, D8, D9); one primary button per file (D4) |
 
 ## Narrowing and replacing
 

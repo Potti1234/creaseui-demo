@@ -16,7 +16,7 @@ Navigation, toolbars and metadata stay quiet so a person scanning the list reads
 
 | Decision | Enforced by |
 |---|---|
-| D4. A regular button has two intents: `primary` for the one main action of a region, `secondary` for everything else. It has one height (28px). | `button`'s props in `src/ui/button.ts`; the allowed values are in `crease.lock.json` |
+| D4. A regular button has two intents: `primary` for the one main action of a region, `secondary` for everything else. It has one height (28px). | `button`'s props in `src/ui/button.ts`; the allowed values are in `crease.lock.json`; at most one `primary` per file (`crease-tasks/one-primary-action`) |
 | D5. An icon-only button always has an accessible name. | `ButtonShape` in `src/ui/button.ts`: `shape: 'icon'` requires `ariaLabel` |
 | D6. The main action of a page sits in the header's action area. | The page header pattern (chapter 7) |
 
