@@ -31,7 +31,7 @@ Navigation, toolbars and metadata stay quiet so a person scanning the list reads
 
 | Decision | Enforced by |
 |---|---|
-| D9. Every action has a pointer route. Keys are shortcuts, never the only way. | Review and browser checks (chapter 9) |
+| D9. Every action has a pointer route. Keys are shortcuts, never the only way. | Review; the browser check (`npm run check:browser`) drives every workflow by pointer, and Ctrl+Enter only as a second route |
 
 ## 5. One vocabulary
 

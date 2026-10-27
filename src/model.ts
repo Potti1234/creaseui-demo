@@ -85,7 +85,7 @@ export const Message = defineMessageUnion({
 })
 export type Message = typeof Message.Type
 
-const ApplyTheme = Command.define('ApplyTheme', {
+export const ApplyTheme = Command.define('ApplyTheme', {
   args: { isDark: S.Boolean },
   messages: [Message.AppliedTheme],
   execute: ({ isDark }) => applyTheme(isDark).pipe(Effect.as(Message.AppliedTheme())),
@@ -142,7 +142,7 @@ const save = (model: Model) =>
     message._tag === 'SucceededSave' ? Message.SucceededSave() : Message.FailedSave({ reason: message.reason }),
   )[0]!
 
-const FocusTitle = Command.define('FocusComposerTitle', {
+export const FocusTitle = Command.define('FocusComposerTitle', {
   messages: [Message.CompletedFocusTitle],
   execute: Dom.focus(`#${TITLE_ID}`).pipe(Effect.ignore, Effect.as(Message.CompletedFocusTitle())),
 })

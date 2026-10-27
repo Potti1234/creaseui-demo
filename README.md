@@ -18,6 +18,7 @@ git diff chapter-04 chapter-05
 | `chapter-06` | Contracts and boundaries |
 | `chapter-07` | Compose named product patterns |
 | `chapter-08` | Model saving, validation and workflows |
+| `chapter-09` | Verify the whole system |
 
 ## Run
 
@@ -27,7 +28,9 @@ npm run dev        # http://127.0.0.1:5197
 npm run typecheck
 npm run lint       # crease's strict lint; fails if the warning count grows
 npm run doctor     # checks that the lint covers every UI file
-npm run check      # all of the above, plus the CSS policy
+npm run check      # all of the above, plus the CSS policy, the lint fixtures and the tests
+npm test           # Story tests of update
+npm run check:browser  # the browser check, against a running `npm run dev`
 npm run scope      # enforcement files changed in the working tree
 ```
 
