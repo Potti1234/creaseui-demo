@@ -1,0 +1,889 @@
+{
+  "artifacts": [
+    {
+      "exports": [
+        {
+          "contract": "implementation.button",
+          "file": "src/lib/button.ts",
+          "name": "renderButton",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.button",
+          "file": "src/lib/button.ts",
+          "name": "renderButtonLink",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/button.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/lib-button"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/icon-nodes.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/lib-icon-nodes"
+    },
+    {
+      "exports": [
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "icon",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowLeft",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "banknote",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "mousePointer2",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "userCheck",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowRight",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowUpRight",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "badgeCheck",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "bookmark",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowDown",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "arrowUp",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "calendarIcon",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "calendarDays",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "check",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronDown",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronLeft",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronRight",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronUp",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chevronsUpDown",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "circleCheck",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "circleIcon",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "clock",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "codeXml",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "gripVertical",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "info",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "eye",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "eyeOff",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "filter",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "loaderCircle",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "menu",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "house",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "folder",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "chartBarStacked",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "settings",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "users",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "layoutDashboard",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "minus",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "moreHorizontal",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "moveHorizontal",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "octagonX",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "panelLeft",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "plus",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "pin",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "rotateCcw",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "search",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "triangleAlert",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.icon",
+          "file": "src/lib/icon.ts",
+          "name": "x",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/icon.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/lib-icon"
+    },
+    {
+      "exports": [
+        {
+          "contract": "implementation.input",
+          "file": "src/lib/input.ts",
+          "name": "renderInput",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/input.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/lib-input"
+    },
+    {
+      "exports": [
+        {
+          "contract": "implementation.sidebar-modal",
+          "file": "src/lib/sidebar-modal.ts",
+          "name": "mobileModalMount",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/sidebar-modal.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/lib-sidebar-modal"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/sidebar-state.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/lib-sidebar-state"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/toolbar.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/lib-toolbar"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/utils.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/lib-utils"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.avatar",
+          "file": "src/ui/avatar.ts",
+          "name": "avatar"
+        },
+        {
+          "contract": "component.avatar",
+          "file": "src/ui/avatar.ts",
+          "name": "avatarImage"
+        },
+        {
+          "contract": "component.avatar",
+          "file": "src/ui/avatar.ts",
+          "name": "avatarFallback"
+        },
+        {
+          "contract": "component.avatar",
+          "file": "src/ui/avatar.ts",
+          "name": "avatarBadge"
+        },
+        {
+          "contract": "component.avatar",
+          "file": "src/ui/avatar.ts",
+          "name": "avatarGroup"
+        },
+        {
+          "contract": "component.avatar",
+          "file": "src/ui/avatar.ts",
+          "name": "avatarGroupCount"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/avatar.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/avatar"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.badge",
+          "file": "src/ui/badge.ts",
+          "name": "badge"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/badge.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/badge"
+    },
+    {
+      "exports": [
+        {
+          "contract": "control.button",
+          "file": "src/ui/button.ts",
+          "name": "button"
+        },
+        {
+          "contract": "control.button",
+          "file": "src/ui/button.ts",
+          "name": "buttonLink"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/button.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/button"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.empty",
+          "file": "src/ui/empty.ts",
+          "name": "empty"
+        },
+        {
+          "contract": "component.empty",
+          "file": "src/ui/empty.ts",
+          "name": "emptyHeader"
+        },
+        {
+          "contract": "component.empty",
+          "file": "src/ui/empty.ts",
+          "name": "emptyMedia"
+        },
+        {
+          "contract": "component.empty",
+          "file": "src/ui/empty.ts",
+          "name": "emptyTitle"
+        },
+        {
+          "contract": "component.empty",
+          "file": "src/ui/empty.ts",
+          "name": "emptyDescription"
+        },
+        {
+          "contract": "component.empty",
+          "file": "src/ui/empty.ts",
+          "name": "emptyContent"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/empty.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/empty"
+    },
+    {
+      "exports": [
+        {
+          "contract": "typography.heading",
+          "file": "src/ui/heading.ts",
+          "name": "heading"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/heading.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/heading"
+    },
+    {
+      "exports": [
+        {
+          "contract": "control.input",
+          "file": "src/ui/input.ts",
+          "name": "input"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/input.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/input"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.item",
+          "file": "src/ui/item.ts",
+          "name": "item"
+        },
+        {
+          "contract": "component.item",
+          "file": "src/ui/item.ts",
+          "name": "itemMedia"
+        },
+        {
+          "contract": "component.item",
+          "file": "src/ui/item.ts",
+          "name": "itemContent"
+        },
+        {
+          "contract": "component.item",
+          "file": "src/ui/item.ts",
+          "name": "itemTitle"
+        },
+        {
+          "contract": "component.item",
+          "file": "src/ui/item.ts",
+          "name": "itemDescription"
+        },
+        {
+          "contract": "component.item",
+          "file": "src/ui/item.ts",
+          "name": "itemActions"
+        },
+        {
+          "contract": "component.item",
+          "file": "src/ui/item.ts",
+          "name": "itemHeader"
+        },
+        {
+          "contract": "component.item",
+          "file": "src/ui/item.ts",
+          "name": "itemFooter"
+        },
+        {
+          "contract": "component.item",
+          "file": "src/ui/item.ts",
+          "name": "itemGroupSeparator"
+        },
+        {
+          "contract": "component.item",
+          "file": "src/ui/item.ts",
+          "name": "itemGroup"
+        },
+        {
+          "contract": "component.item",
+          "file": "src/ui/item.ts",
+          "name": "itemSeparator"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/item.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/item"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.kbd",
+          "file": "src/ui/kbd.ts",
+          "name": "kbd"
+        },
+        {
+          "contract": "component.kbd",
+          "file": "src/ui/kbd.ts",
+          "name": "kbdGroup"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/kbd.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/kbd"
+    },
+    {
+      "exports": [
+        {
+          "contract": "composition.separator",
+          "file": "src/ui/separator.ts",
+          "name": "separator"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/separator.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/separator"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarProvider"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebar"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarTrigger"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarRail"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarInset"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarInput"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarHeader"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarFooter"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarSeparator"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarContent"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarGroup"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarGroupLabel"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarGroupAction"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarGroupContent"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenu"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuItem"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuButton"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuAction"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuBadge"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuSkeleton"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuSub"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuSubItem"
+        },
+        {
+          "contract": "component.sidebar",
+          "file": "src/ui/sidebar.ts",
+          "name": "sidebarMenuSubButton"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/sidebar.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/sidebar"
+    },
+    {
+      "exports": [
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stack.ts",
+          "name": "stack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stack.ts",
+          "name": "hStack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stack.ts",
+          "name": "vStack"
+        },
+        {
+          "contract": "composition.stack",
+          "file": "src/ui/stack.ts",
+          "name": "stackItem"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/stack.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/stack"
+    },
+    {
+      "exports": [
+        {
+          "contract": "typography.text",
+          "file": "src/ui/text.ts",
+          "name": "text"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/text.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/text"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.toolbar",
+          "file": "src/ui/toolbar.ts",
+          "name": "toolbar"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/toolbar.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/toolbar"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.icon",
+          "file": "src/ui/icon.ts",
+          "name": "icon"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/icon.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/icon"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/main.ts",
+          "rawRendering": false,
+          "role": "setup"
+        }
+      ],
+      "id": "crease/setup-src-main"
+    }
+  ],
+  "policyVersion": "crease-default-v1",
+  "renderer": "tailwind",
+  "schemaVersion": 1
+}

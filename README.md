@@ -1,0 +1,29 @@
+# Crease Tasks
+
+The example app of the Crease design-system guide: an issue tracker modelled on Linear, built with [Foldkit](https://foldkit.dev) and [crease/ui](https://github.com/Potti1234/creaseui) components, Tailwind renderer.
+
+Each chapter of the guide is a tag on `main`. Check one out to get the app as that chapter leaves it, or diff two tags to see exactly what a chapter changed:
+
+```sh
+git switch --detach chapter-05
+git diff chapter-04 chapter-05
+```
+
+| Tag | Chapter |
+|---|---|
+| `chapter-02` | Install and run: a first slice, built quickly |
+| `chapter-03` | Turn product principles into decisions |
+| `chapter-04` | Create a coherent theme |
+| `chapter-05` | Customize a component and reduce its API |
+
+## Run
+
+```sh
+npm install
+npm run dev        # http://127.0.0.1:5197
+npm run typecheck
+npm run lint       # crease's strict lint; fails if the warning count grows
+npm run doctor     # checks that the lint covers every UI file
+```
+
+The crease components in `src/ui` and `src/lib` were installed with the shadcn CLI from `Potti1234/creaseui` at commit `9240b562`. They are this app's own source from then on. `crease.lock.json` records which files came from crease and what each export may be called with. `@creaseui/lint` is not published yet, so a packed copy is in `vendor/`.
