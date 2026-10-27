@@ -13,6 +13,10 @@ import * as DropdownMenu from '@/ui/dropdown-menu'
 export const View = S.Literals(['all', 'mine', 'bugs'])
 export type View = typeof View.Type
 
+/** How All issues lays its issues out: rows, or cards on a board. */
+export const Layout = S.Literals(['list', 'board'])
+export type Layout = typeof Layout.Type
+
 export const Sort = S.Literals(['priority', 'newest'])
 export type Sort = typeof Sort.Type
 
@@ -28,6 +32,7 @@ export const Model = S.Struct({
   view: View,
   query: S.String,
   isGrouped: S.Boolean,
+  layout: Layout,
   sort: Sort,
   collapsed: S.Array(Status),
   picker: S.NullOr(OpenPicker),
@@ -45,6 +50,7 @@ export const Message = defineMessageUnion({
   ChangedQuery: { query: S.String },
   ClearedQuery: {},
   ToggledGrouping: {},
+  ToggledLayout: {},
   ToggledSort: {},
   ToggledGroup: { status: Status },
   GotPickerMessage: { key: S.String, message: DropdownMenu.Message },
@@ -71,6 +77,7 @@ export const init = (flags: Flags): Update.Return<Model, Message> => ({
     view: 'all',
     query: '',
     isGrouped: true,
+    layout: 'list',
     sort: 'priority',
     collapsed: [],
     picker: null,
@@ -137,6 +144,10 @@ export const update = (model: Model, message: Message): Return =>
       ChangedQuery: ({ query }) => ({ model: { ...model, query } }),
       ClearedQuery: () => ({ model: { ...model, query: '' } }),
       ToggledGrouping: () => ({ model: { ...model, isGrouped: !model.isGrouped } }),
+      ToggledLayout: () => {
+        const layout: Layout = model.layout === 'list' ? 'board' : 'list'
+        return { model: { ...model, layout } }
+      },
       ToggledSort: () => {
         const sort: Sort = model.sort === 'priority' ? 'newest' : 'priority'
         return { model: { ...model, sort } }

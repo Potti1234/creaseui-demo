@@ -62,6 +62,54 @@ describe('changing a property in place', () => {
     ))
 })
 
+describe('the board', () => {
+  test('All issues starts as a list; the toggle switches to the board and back, keeping grouping', () =>
+    Story.story(
+      update,
+      Story.given(start),
+      Story.model(model => expect(model.layout).toBe('list')),
+      Story.message(Message.ToggledLayout()),
+      Story.model(model => {
+        expect(model.layout).toBe('board')
+        expect(model.isGrouped).toBe(true)
+      }),
+      Story.message(Message.ToggledLayout()),
+      Story.model(model => expect(model.layout).toBe('list')),
+    ))
+
+  test('an ungrouped list stays ungrouped after a trip to the board', () =>
+    Story.story(
+      update,
+      Story.given(start),
+      Story.message(Message.ToggledGrouping()),
+      Story.message(Message.ToggledLayout()),
+      Story.message(Message.ToggledLayout()),
+      Story.model(model => {
+        expect(model.layout).toBe('list')
+        expect(model.isGrouped).toBe(false)
+      }),
+    ))
+
+  test('the layout is not saved: switching produces no Command (008: not kept after a reload)', () =>
+    Story.story(
+      update,
+      Story.given(start),
+      Story.message(Message.ToggledLayout()),
+      Story.Command.expectNone(),
+      Story.model(model => expect(model.layout).toBe('board')),
+    ))
+
+  test('changing a status on a card commits and saves, as in a row', () =>
+    Story.story(
+      update,
+      Story.given({ ...start, layout: 'board' }),
+      ...choose('CRE-120--status', 'todo', 1),
+      Story.model(model => expect(issue(model, 'CRE-120')?.status).toBe('todo')),
+      focusReturned,
+      Story.Command.resolve(SaveIssues, SaveMessage.SucceededSave()),
+    ))
+})
+
 describe('creating an issue', () => {
   test('an empty title shows an error and focuses the title; nothing is created', () =>
     Story.story(

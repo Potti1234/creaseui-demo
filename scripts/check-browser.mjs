@@ -138,6 +138,62 @@ await check('Unreadable saved data falls back to the sample, with a notice', asy
   await page.evaluate(() => localStorage.clear())
 })
 
+// The board (change 008, decision D12). The board is the element that holds
+// the five column sections.
+const STATUS_ORDER = ['Backlog', 'Todo', 'In Progress', 'In Review', 'Done']
+const measureBoard = () =>
+  page.evaluate(() => {
+    const columns = [...document.querySelectorAll('section')]
+    const board = columns[0]?.parentElement
+    const area = board?.getBoundingClientRect()
+    return {
+      titles: columns.map(column => column.innerText.split('\n')[0]),
+      widths: columns.map(column => Math.round(column.getBoundingClientRect().width)),
+      outside: columns.filter(column => column.getBoundingClientRect().right > Math.min(area.right, window.innerWidth) + 0.5).length,
+      boardOverflow: board.scrollWidth - board.clientWidth,
+      boardScrolls: getComputedStyle(board).overflowX === 'auto',
+      pageOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    }
+  })
+
+await check('Board: the layout toggle shows All issues as one column per status, in workflow order', async () => {
+  await fresh()
+  await page.getByRole('button', { name: 'Layout: List' }).click()
+  await page.waitForTimeout(150)
+  expect((await page.getByRole('button', { name: 'Layout: Board' }).count()) === 1, 'toggle does not say Layout: Board')
+  expect((await page.getByRole('button', { name: /grouped/i }).count()) === 0, 'grouping control shown on the board')
+  const { titles } = await measureBoard()
+  expect(titles.join('|') === STATUS_ORDER.join('|'), `columns: ${titles.join(', ')}`)
+})
+
+await check('Board: at 1280px all five columns are visible and nothing scrolls sideways', async () => {
+  await page.setViewportSize({ width: 1280, height: 800 })
+  const board = await measureBoard()
+  expect(board.pageOverflow <= 0, `page scrolls ${board.pageOverflow}px sideways`)
+  expect(board.boardOverflow <= 0, `board scrolls ${board.boardOverflow}px sideways`)
+  expect(board.outside === 0, `${board.outside} column(s) cut off or hidden`)
+  expect(new Set(board.widths).size === 1, `column widths differ: ${board.widths.join(', ')}`)
+})
+
+await check('Board: below the minimum column width the board scrolls in its own region, the page does not', async () => {
+  await page.setViewportSize({ width: 900, height: 800 })
+  const board = await measureBoard()
+  await page.setViewportSize({ width: 1280, height: 800 })
+  expect(board.pageOverflow <= 0, `page scrolls ${board.pageOverflow}px sideways`)
+  expect(board.boardScrolls && board.boardOverflow > 0, 'board does not scroll in its own region')
+  expect(board.widths.every(width => width >= 180), `columns narrower than the minimum: ${board.widths.join(', ')}`)
+})
+
+await check('D7 on the board: a status change moves the card to its column, focus returns to its glyph', async () => {
+  await page.locator('[id="CRE-131--status-trigger"]').click()
+  await page.getByRole('menuitemradio', { name: 'In Review' }).click()
+  await page.waitForTimeout(150)
+  expect((await label('[id="CRE-131--status-trigger"]')) === 'Status: In Review', 'status not changed')
+  const column = await page.locator('section', { has: page.locator('[id="CRE-131--status-trigger"]') }).first().innerText()
+  expect(column.startsWith('In Review'), `card is in the "${column.split('\n')[0]}" column`)
+  expect((await focused()) === 'CRE-131--status-trigger', `focus on "${await focused()}"`)
+})
+
 await check('Component: an inline item keeps text in its content on one 36px line in a 240px column', async () => {
   await page.goto(new URL('component-check.html', BASE_URL).href, { waitUntil: 'networkidle' })
   const row = page.locator('[data-slot=item][data-layout=inline]')

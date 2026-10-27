@@ -22,6 +22,7 @@ git diff chapter-04 chapter-05
 | `chapter-10` | Configure the product policy |
 | `chapter-11` | Write a product lint rule |
 | `chapter-12` | Feature work by agents, inside the system |
+| `chapter-13` | A design-system change, proposed by an agent and reviewed |
 
 ## Run
 
