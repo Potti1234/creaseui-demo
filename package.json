@@ -9,7 +9,9 @@
     "preview": "vite preview --host 127.0.0.1 --port 4190 --strictPort",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --max-warnings 1",
-    "doctor": "creaseui-lint doctor"
+    "doctor": "creaseui-lint doctor",
+    "check": "tsc --noEmit && eslint src --max-warnings 1 && creaseui-lint doctor && creaseui-lint css",
+    "scope": "creaseui-lint scope --baseline HEAD"
   },
   "dependencies": {
     "@effect/platform-browser": "4.0.0-rc.117",

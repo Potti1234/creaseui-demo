@@ -7,11 +7,12 @@ export default [
   ...creaseui({
     rootDir: fileURLToPath(new URL('.', import.meta.url)),
     renderer: 'tailwind',
-    // The first slice was built quickly. Its views run in migration mode:
-    // every rule still runs, but findings are warnings, counted by the
-    // ratchet in package.json until they are gone.
+    // Files with known findings run in migration mode: every rule still runs,
+    // but findings are warnings, counted by the ratchet in package.json.
+    // A file leaves this list as soon as it is clean; everything else is
+    // checked at error level.
     preset: 'migration',
-    migrationFiles: ['src/view.ts', 'src/features/**/*.ts'],
+    migrationFiles: ['src/features/issues.ts'],
     files: ['src/**/*.{ts,tsx,js,jsx}'],
     tsconfig: './tsconfig.json',
     manifest: './crease.lock.json',
