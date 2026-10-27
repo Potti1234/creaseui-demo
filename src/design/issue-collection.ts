@@ -5,6 +5,7 @@ import { issueBoard } from './issue-board'
 import { issueGroup } from './issue-group'
 import { issueRow } from './issue-row'
 import type { PickerContext } from './property-picker'
+import { button } from '@/ui/button'
 import { empty, emptyDescription, emptyHeader, emptyTitle } from '@/ui/empty'
 import { itemGroup, itemGroupSeparator } from '@/ui/item'
 import { stack } from '@/ui/stack'
@@ -41,9 +42,31 @@ export type CollectionBody<Msg> =
   | Readonly<{ kind: 'board'; issues: ReadonlyArray<Issue> }>
   | Readonly<{ kind: 'empty'; title: string; description: string }>
 
+/** A display option: how the list is shown, not which issues it shows. */
+export type DisplayOption<Msg> = Readonly<{
+  name: 'Layout' | 'Grouping' | 'Order'
+  value: string
+  onChange: Msg
+}>
+
+/** An action on the list itself, such as clearing a search. */
+export type CollectionAction<Msg> = Readonly<{ label: string; onClick: Msg }>
+
+const DISPLAY_ORDER: ReadonlyArray<DisplayOption<never>['name']> = ['Layout', 'Grouping', 'Order']
+
+const displayButtons = <Msg>(options: ReadonlyArray<DisplayOption<Msg>>, h: HtmlBuilder<Msg>): ReadonlyArray<Html> =>
+  DISPLAY_ORDER.flatMap(name =>
+    options
+      .filter(option => option.name === name)
+      .map(option => button({ onClick: option.onChange, children: [`${option.name}: ${option.value}`] }, h)),
+  )
+
 export const issueCollection = <Msg>(
   props: Readonly<{
-    controls: ReadonlyArray<Html>
+    /** @deprecated Since chapter 14: pass `display` and `actions`. Removed once no view uses it. */
+    controls?: ReadonlyArray<Html>
+    display?: ReadonlyArray<DisplayOption<Msg>>
+    actions?: ReadonlyArray<CollectionAction<Msg>>
     summary?: string
     body: CollectionBody<Msg>
     pickers: PickerContext<Msg>
@@ -63,8 +86,10 @@ export const issueCollection = <Msg>(
             paddingInline: 4,
             paddingBlockEnd: 2,
             children: [
-              ...props.controls,
+              ...(props.controls ?? []),
+              ...displayButtons(props.display ?? [], h),
               ...(props.summary === undefined ? [] : [text({ size: 'xsm', color: 'secondary', children: [props.summary] }, h)]),
+              ...(props.actions ?? []).map(action => button({ onClick: action.onClick, children: [action.label] }, h)),
             ],
           },
           h,

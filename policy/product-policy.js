@@ -39,4 +39,20 @@ export const productPolicy = [
       'crease-tasks/one-primary-action': 'error',
     },
   },
+  {
+    name: 'crease-tasks/deprecations',
+    files: ['src/features/**/*.ts', 'src/view.ts'],
+    rules: {
+      // Chapter 14: IssueCollection's free-form `controls` is replaced by
+      // structured `display` and `actions`. A warning per caller, counted by
+      // the ratchet in package.json until none is left.
+      'no-restricted-syntax': [
+        'warn',
+        {
+          selector: "CallExpression[callee.name='issueCollection'] Property[key.name='controls']",
+          message: 'IssueCollection `controls` is deprecated: pass `display` options and `actions` instead (chapter 14).',
+        },
+      ],
+    },
+  },
 ]
