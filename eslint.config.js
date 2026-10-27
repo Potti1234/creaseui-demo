@@ -7,12 +7,9 @@ export default [
   ...creaseui({
     rootDir: fileURLToPath(new URL('.', import.meta.url)),
     renderer: 'tailwind',
-    // Files with known findings run in migration mode: every rule still runs,
-    // but findings are warnings, counted by the ratchet in package.json.
-    // A file leaves this list as soon as it is clean; everything else is
-    // checked at error level.
-    preset: 'migration',
-    migrationFiles: ['src/features/issues.ts'],
+    // Every file is checked at error level. Chapter 7 removed the last
+    // finding; there is no migration mode left.
+    preset: 'strict',
     files: ['src/**/*.{ts,tsx,js,jsx}'],
     tsconfig: './tsconfig.json',
     manifest: './crease.lock.json',
@@ -32,4 +29,20 @@ export default [
       },
     ],
   }),
+  // Product rule: issue rows and property menus come from the patterns in
+  // src/design (decisions D3 and D7), never from the components they use.
+  {
+    files: ['src/features/**/*.ts', 'src/view.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            { name: '@/ui/item', message: 'List issues with issueCollection or issueRow from src/design (decision D3).' },
+            { name: '@/ui/dropdown-menu', message: 'Change issue properties with propertyPicker from src/design (decision D7).' },
+          ],
+        },
+      ],
+    },
+  },
 ]

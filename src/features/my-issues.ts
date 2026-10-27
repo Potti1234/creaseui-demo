@@ -1,13 +1,9 @@
 import type { Html, HtmlBuilder } from 'foldkit/html'
 
 import { type Issue, ME, PRIORITY_RANK } from '../domain'
-import { type Message, Message as M, type Model } from '../model'
-import { priorityGlyph, statusGlyph } from './glyphs'
-import { badge } from '@/ui/badge'
+import { issueCollection } from '../design/issue-collection'
+import { type Message, Message as M, type Model, pickersOf } from '../model'
 import { button } from '@/ui/button'
-import { item, itemActions, itemContent, itemGroup, itemMedia, itemTitle } from '@/ui/item'
-import { stack } from '@/ui/stack'
-import { text } from '@/ui/text'
 
 /* The signed-in person's open issues, as one list. */
 
@@ -22,40 +18,22 @@ const sorted = (model: Model): ReadonlyArray<Issue> =>
         : issueNumber(b) - issueNumber(a),
     )
 
-const myRow = (issue: Issue, h: HtmlBuilder<Message>): Html =>
-  item(
+export const myIssuesView = (model: Model, h: HtmlBuilder<Message>): Html => {
+  const issues = sorted(model)
+  return issueCollection(
     {
-      size: 'xs',
-      layout: 'inline',
-      children: [
-        itemMedia({ children: [statusGlyph(issue.status, h), priorityGlyph(issue.priority, h)] }, h),
-        itemContent({ children: [itemTitle({ children: [issue.title] }, h)] }, h),
-        itemActions({
-          children: [
-            ...issue.labels.map(label => badge({ variant: 'secondary', children: [label] }, h)),
-            text({ size: 'xsm', color: 'secondary', hasTabularNumbers: true, children: [issue.id] }, h),
-          ],
-        }, h),
+      controls: [
+        button(
+          { onClick: M.ToggledSort(), children: [model.sort === 'priority' ? 'Sort: Priority' : 'Sort: Newest'] },
+          h,
+        ),
       ],
+      body:
+        issues.length === 0
+          ? { kind: 'empty', title: 'Nothing assigned to you', description: 'Issues you are assigned to and have not finished show up here.' }
+          : { kind: 'rows', issues },
+      pickers: pickersOf(model),
     },
     h,
   )
-
-export const myIssuesView = (model: Model, h: HtmlBuilder<Message>): Html =>
-  stack({
-    paddingInline: 2,
-    children: [
-      stack({
-        direction: 'horizontal',
-        paddingInline: 2,
-        paddingBlockEnd: 2,
-        children: [
-          button({
-            onClick: M.ToggledSort(),
-            children: [model.sort === 'priority' ? 'Sort: Priority' : 'Sort: Newest'],
-          }, h),
-        ],
-      }, h),
-      itemGroup({ children: sorted(model).map(issue => myRow(issue, h)) }, h),
-    ],
-  }, h)
+}

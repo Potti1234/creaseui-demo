@@ -9,8 +9,8 @@ Navigation, toolbars and metadata stay quiet so a person scanning the list reads
 | Decision | Enforced by |
 |---|---|
 | D1. An issue row has one height (36px) and never wraps. A long title is cut with an ellipsis; metadata keeps its place at the end. | `item({ size: 'xs', layout: 'inline' })` in `src/ui/item.ts`; the allowed values are in `crease.lock.json` |
-| D2. Metadata in a row (identifier, labels, date, assignee) uses the small secondary text style. | Each view for now; the `IssueRow` pattern (chapter 7) |
-| D3. Every view shows an issue with the same row: same parts, same order. | The `IssueRow` pattern (chapter 7) |
+| D2. Metadata in a row (identifier, labels, date, assignee) uses the small secondary text style. | `IssueRow` in `src/design/issue-row.ts` |
+| D3. Every view shows an issue with the same row: same parts, same order. | `IssueRow`; feature code may not import `@/ui/item` (`eslint.config.js`) |
 
 ## 2. Actions are few and predictable
 
@@ -24,7 +24,7 @@ Navigation, toolbars and metadata stay quiet so a person scanning the list reads
 
 | Decision | Enforced by |
 |---|---|
-| D7. Status, priority and assignee change through a picker opened from the row, without leaving the list. Focus returns to the row afterwards. | The `PropertyPicker` pattern (chapter 7) |
+| D7. Status, priority and assignee change through a picker opened from the row, without leaving the list. Focus returns to the row afterwards. | `PropertyPicker` in `src/design/property-picker.ts`; feature code may not import `@/ui/dropdown-menu`; the menu returns focus to its trigger after a selection (`src/ui/dropdown-menu.ts`) |
 | D8. Creating an issue opens the composer, the only way to create one. The draft survives closing it. | The composer (chapter 8) |
 
 ## 4. The keyboard reaches everything, the pointer too

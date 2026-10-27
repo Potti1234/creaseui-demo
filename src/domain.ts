@@ -20,8 +20,13 @@ export const Issue = S.Struct({
 })
 export type Issue = typeof Issue.Type
 
-/* Workflow order, as the list groups it. */
+/* The order the list groups issues in: work closest to done first. */
 export const STATUSES: ReadonlyArray<Status> = ['in_review', 'in_progress', 'todo', 'backlog', 'done']
+
+/* Workflow order, as a picker offers them. */
+export const STATUSES_IN_ORDER: ReadonlyArray<Status> = ['backlog', 'todo', 'in_progress', 'in_review', 'done']
+
+export const PRIORITIES: ReadonlyArray<Priority> = ['urgent', 'high', 'medium', 'low', 'none']
 
 export const STATUS_LABEL: Readonly<Record<Status, string>> = {
   backlog: 'Backlog',

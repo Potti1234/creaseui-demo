@@ -1,13 +1,9 @@
 import type { Html, HtmlBuilder } from 'foldkit/html'
 
-import { type Issue } from '../domain'
-import { type Message, Message as M, type Model } from '../model'
-import { statusGlyph } from './glyphs'
+import type { Issue } from '../domain'
+import { issueCollection } from '../design/issue-collection'
+import { type Message, Message as M, type Model, pickersOf } from '../model'
 import { button } from '@/ui/button'
-import { empty, emptyDescription, emptyHeader, emptyTitle } from '@/ui/empty'
-import { item, itemContent, itemGroup, itemMedia, itemTitle } from '@/ui/item'
-import { stack } from '@/ui/stack'
-import { text } from '@/ui/text'
 
 /* Search results: issues whose identifier or title contains the query. */
 
@@ -16,52 +12,18 @@ const matches = (issue: Issue, query: string): boolean => {
   return issue.id.toLowerCase().includes(needle) || issue.title.toLowerCase().includes(needle)
 }
 
-const result = (issue: Issue, h: HtmlBuilder<Message>): Html =>
-  item(
+export const searchView = (model: Model, h: HtmlBuilder<Message>): Html => {
+  const results = model.issues.filter(issue => matches(issue, model.query))
+  return issueCollection(
     {
-      size: 'xs',
-      layout: 'inline',
-      children: [
-        itemMedia({ children: [statusGlyph(issue.status, h)] }, h),
-        itemContent({
-          children: [
-            text({ size: 'xsm', color: 'secondary', hasTabularNumbers: true, children: [issue.id] }, h),
-            itemTitle({ children: [issue.title] }, h),
-          ],
-        }, h),
-      ],
+      controls: [button({ onClick: M.ClearedQuery(), children: ['Clear search'] }, h)],
+      summary: `${results.length} ${results.length === 1 ? 'result' : 'results'} for “${model.query}”`,
+      body:
+        results.length === 0
+          ? { kind: 'empty', title: 'No issues match', description: 'Try an identifier like CRE-131 or a word from the title.' }
+          : { kind: 'rows', issues: results },
+      pickers: pickersOf(model),
     },
     h,
   )
-
-export const searchView = (model: Model, h: HtmlBuilder<Message>): Html => {
-  const results = model.issues.filter(issue => matches(issue, model.query))
-  return stack({
-    paddingInline: 2,
-    children: [
-      stack({
-        direction: 'horizontal',
-        align: 'center',
-        gap: 2,
-        paddingInline: 2,
-        paddingBlockEnd: 2,
-        children: [
-          text({ size: 'xsm', color: 'secondary', children: [`${results.length} ${results.length === 1 ? 'result' : 'results'} for “${model.query}”`] }, h),
-          button({ onClick: M.ClearedQuery(), children: ['Clear search'] }, h),
-        ],
-      }, h),
-      results.length === 0
-        ? empty({
-            children: [
-              emptyHeader({
-                children: [
-                  emptyTitle({ children: ['No issues match'] }, h),
-                  emptyDescription({ children: ['Try an identifier like CRE-131 or a word from the title.'] }, h),
-                ],
-              }, h),
-            ],
-          }, h)
-        : itemGroup({ children: results.map(issue => result(issue, h)) }, h),
-    ],
-  }, h)
 }

@@ -50,6 +50,8 @@ export type ButtonProps<Msg> = ButtonBehaviorProps<Msg> &
   Readonly<{
     /** `primary` for the one main action of a region, `secondary` for everything else (D4). */
     intent?: ButtonIntent
+    /** For a button that shows or hides something (a disclosure): whether it is shown. */
+    ariaExpanded?: boolean
     class?: string
   }>
 
@@ -69,6 +71,9 @@ export const button = <Msg>(
       ...(props.dataSize === undefined
         ? [h.DataAttribute('size', dataSize(shape))]
         : []),
+      ...(props.ariaExpanded === undefined
+        ? []
+        : [h.AriaExpanded(props.ariaExpanded)]),
       h.Class(cn(buttonVariants({ intent, shape }), props.class)),
     ],
     h,

@@ -917,6 +917,34 @@
         }
       ],
       "id": "crease/setup-src-main"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/dropdown-menu-behavior.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/lib-dropdown-menu-behavior"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.dropdown-menu",
+          "file": "src/ui/dropdown-menu.ts",
+          "name": "dropdownMenu"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/dropdown-menu.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/dropdown-menu"
     }
   ],
   "policyVersion": "crease-default-v1",
