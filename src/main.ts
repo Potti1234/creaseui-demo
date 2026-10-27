@@ -1,4 +1,7 @@
 import './styles.css'
+// The product theme comes after crease's base theme so its tokens win.
+import './theme/tokens.css'
+import './theme/geometry.css'
 
 import { Runtime } from 'foldkit'
 
