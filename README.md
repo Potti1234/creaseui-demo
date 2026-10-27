@@ -20,6 +20,7 @@ git diff chapter-04 chapter-05
 | `chapter-08` | Model saving, validation and workflows |
 | `chapter-09` | Verify the whole system |
 | `chapter-10` | Configure the product policy |
+| `chapter-11` | Write a product lint rule |
 
 ## Run
 

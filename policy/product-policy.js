@@ -5,6 +5,8 @@
  * crease rule. Allowed component values (variants) are not here; they are in
  * crease.lock.json, next to the components they narrow.
  */
+import creaseTasks from '../tooling/eslint-plugin-crease-tasks/index.js'
+
 export const productPolicy = [
   {
     name: 'crease-tasks/patterns-only',
@@ -23,6 +25,16 @@ export const productPolicy = [
           ],
         },
       ],
+    },
+  },
+  {
+    name: 'crease-tasks/rules',
+    files: ['src/**/*.ts'],
+    plugins: { 'crease-tasks': creaseTasks },
+    rules: {
+      // D4: one primary action per region. A rule of our own, because no
+      // configuration can count (tooling/eslint-plugin-crease-tasks).
+      'crease-tasks/one-primary-action': 'error',
     },
   },
 ]
