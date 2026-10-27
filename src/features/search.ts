@@ -20,14 +20,13 @@ const result = (issue: Issue, h: HtmlBuilder<Message>): Html =>
   item(
     {
       size: 'xs',
-      class: 'flex-nowrap h-9 px-3 hover:bg-accent',
+      layout: 'inline',
       children: [
         itemMedia({ children: [statusGlyph(issue.status, h)] }, h),
         itemContent({
-          class: 'min-w-0 flex-row items-baseline gap-2',
           children: [
             text({ size: 'xsm', color: 'secondary', hasTabularNumbers: true, children: [issue.id] }, h),
-            itemTitle({ class: 'truncate', children: [issue.title] }, h),
+            itemTitle({ children: [issue.title] }, h),
           ],
         }, h),
       ],
@@ -48,7 +47,7 @@ export const searchView = (model: Model, h: HtmlBuilder<Message>): Html => {
         paddingBlockEnd: 2,
         children: [
           text({ size: 'xsm', color: 'secondary', children: [`${results.length} ${results.length === 1 ? 'result' : 'results'} for “${model.query}”`] }, h),
-          button({ variant: 'link', size: 'xs', class: 'px-0', onClick: M.ClearedQuery(), children: ['Clear search'] }, h),
+          button({ onClick: M.ClearedQuery(), children: ['Clear search'] }, h),
         ],
       }, h),
       results.length === 0

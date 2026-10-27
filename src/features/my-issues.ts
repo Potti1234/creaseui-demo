@@ -25,16 +25,11 @@ const sorted = (model: Model): ReadonlyArray<Issue> =>
 const myRow = (issue: Issue, h: HtmlBuilder<Message>): Html =>
   item(
     {
-      size: 'sm',
-      class: 'flex-nowrap gap-2 py-1.5',
+      size: 'xs',
+      layout: 'inline',
       children: [
         itemMedia({ children: [statusGlyph(issue.status, h), priorityGlyph(issue.priority, h)] }, h),
-        itemContent({
-          class: 'min-w-0',
-          children: [
-            itemTitle({ class: 'truncate', children: [issue.title] }, h),
-          ],
-        }, h),
+        itemContent({ children: [itemTitle({ children: [issue.title] }, h)] }, h),
         itemActions({
           children: [
             ...issue.labels.map(label => badge({ variant: 'secondary', children: [label] }, h)),
@@ -56,9 +51,6 @@ export const myIssuesView = (model: Model, h: HtmlBuilder<Message>): Html =>
         paddingBlockEnd: 2,
         children: [
           button({
-            variant: 'outline',
-            size: 'sm',
-            class: 'h-7 rounded-md',
             onClick: M.ToggledSort(),
             children: [model.sort === 'priority' ? 'Sort: Priority' : 'Sort: Newest'],
           }, h),

@@ -462,12 +462,32 @@
         {
           "contract": "control.button",
           "file": "src/ui/button.ts",
-          "name": "button"
+          "name": "button",
+          "variants": {
+            "intent": [
+              "primary",
+              "secondary"
+            ],
+            "shape": [
+              "text",
+              "icon"
+            ]
+          }
         },
         {
           "contract": "control.button",
           "file": "src/ui/button.ts",
-          "name": "buttonLink"
+          "name": "buttonLink",
+          "variants": {
+            "intent": [
+              "primary",
+              "secondary"
+            ],
+            "shape": [
+              "text",
+              "icon"
+            ]
+          }
         }
       ],
       "files": [
@@ -560,7 +580,23 @@
         {
           "contract": "component.item",
           "file": "src/ui/item.ts",
-          "name": "item"
+          "name": "item",
+          "variants": {
+            "variant": [
+              "default",
+              "outline",
+              "muted"
+            ],
+            "size": [
+              "default",
+              "sm",
+              "xs"
+            ],
+            "layout": [
+              "wrap",
+              "inline"
+            ]
+          }
         },
         {
           "contract": "component.item",
