@@ -46,6 +46,12 @@ Navigation, toolbars and metadata stay quiet so a person scanning the list reads
 |---|---|
 | D11. A saved view is one entry in `src/features/views.ts`: its id is its label in kebab case (`active-bugs`), its filter is in the entry, and its tests are in `test/views.test.ts`. | Review; the drift test of chapter 12 (two of three agents did this unasked) |
 
+## 7. Every list page has the same bar
+
+| Decision | Enforced by |
+|---|---|
+| D13. The bar above a list shows display options as "Name: value" buttons (Layout, Grouping, Order, in that order), then the summary, then actions on the list. Views pass these as data; they do not build buttons. | `IssueCollection`'s `display` and `actions` props (`src/design/issue-collection.ts`) |
+
 ## How these change
 
 A decision changes in a commit that also changes its enforcing code, with the reason in the commit message. A view that needs something these decisions forbid is a design-system question first: either the decision gains a case, or the view changes.
