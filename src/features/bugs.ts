@@ -10,7 +10,6 @@ export const bugsView = (model: Model, h: HtmlBuilder<Message>): Html => {
   const bugs = model.issues.filter(isOpenBug)
   return issueCollection(
     {
-      controls: [],
       body:
         bugs.length === 0
           ? { kind: 'empty', title: 'No open bugs', description: 'Issues labelled Bug that are not done show up here.' }
