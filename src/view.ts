@@ -5,12 +5,14 @@ import { allIssuesView } from './features/issues'
 import { myIssuesView } from './features/my-issues'
 import { searchView } from './features/search'
 import { type Message, Message as M, type Model } from './model'
+import { button } from '@/ui/button'
 import { heading } from '@/ui/heading'
 import { icon } from '@/ui/icon'
 import { input } from '@/ui/input'
 import {
   sidebar,
   sidebarContent,
+  sidebarFooter,
   sidebarGroup,
   sidebarGroupLabel,
   sidebarHeader,
@@ -49,6 +51,18 @@ const navItem = (
         ),
         sidebarMenuBadge({ children: [String(openCount(model, view === 'mine'))] }, h),
       ],
+    },
+    h,
+  )
+
+const themeToggle = (model: Model, h: HtmlBuilder<Message>): Html =>
+  button(
+    {
+      variant: 'ghost',
+      size: 'icon-sm',
+      ariaLabel: model.isDark ? 'Use light theme' : 'Use dark theme',
+      onClick: M.ToggledTheme(),
+      children: [icon({ name: model.isDark ? 'sun' : 'moon' }, h)],
     },
     h,
   )
@@ -95,6 +109,7 @@ export const view = (model: Model, h: HtmlBuilder<Message>): Html =>
                 },
                 h,
               ),
+              sidebarFooter({ children: [themeToggle(model, h)] }, h),
             ],
           },
           h,
