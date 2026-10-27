@@ -23,6 +23,7 @@ git diff chapter-04 chapter-05
 | `chapter-11` | Write a product lint rule |
 | `chapter-12` | Feature work by agents, inside the system |
 | `chapter-13` | A design-system change, proposed by an agent and reviewed |
+| `chapter-14` | Evolve an API and migrate its callers |
 
 ## Run
 

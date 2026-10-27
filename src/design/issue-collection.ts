@@ -16,9 +16,11 @@ import { text } from '@/ui/text'
  * My issues, search results, and later saved views).
  *
  * Rules:
- * - One bar above the list. Display controls (grouping, ordering) sit at
- *   its start; a summary of what is shown ("6 results for …") sits after
- *   them. Filters join this bar in a later chapter.
+ * - One bar above the list (decision D13). Display options come first, as
+ *   "Name: value" buttons in the order Layout, Grouping, Order; then the
+ *   summary of what is shown ("6 results for …"); then actions on the list
+ *   itself ("Clear search"). A view passes data; the collection draws the
+ *   bar, so every list page has the same one.
  * - The body is one of four things: groups by status, a flat list, a
  *   board (IssueBoard: one column per status, issues as cards), or an
  *   empty state that says what to try instead. A view picks one; it does
@@ -62,8 +64,6 @@ const displayButtons = <Msg>(options: ReadonlyArray<DisplayOption<Msg>>, h: Html
 
 export const issueCollection = <Msg>(
   props: Readonly<{
-    /** @deprecated Since chapter 14: pass `display` and `actions`. Removed once no view uses it. */
-    controls?: ReadonlyArray<Html>
     display?: ReadonlyArray<DisplayOption<Msg>>
     actions?: ReadonlyArray<CollectionAction<Msg>>
     summary?: string
@@ -83,7 +83,6 @@ export const issueCollection = <Msg>(
             paddingInline: 4,
             paddingBlockEnd: 2,
             children: [
-              ...(props.controls ?? []),
               ...displayButtons(props.display ?? [], h),
               ...(props.summary === undefined ? [] : [text({ size: 'xsm', color: 'secondary', children: [props.summary] }, h)]),
               ...(props.actions ?? []).map(action => button({ onClick: action.onClick, children: [action.label] }, h)),
