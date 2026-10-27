@@ -44,6 +44,7 @@ export const savedView = (model: Model, saved: SavedView, h: HtmlBuilder<Message
               })),
             },
       pickers: pickersOf(model),
+      onOpen: id => M.OpenedIssue({ id }),
     },
     h,
   )

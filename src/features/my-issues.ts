@@ -33,6 +33,7 @@ export const myIssuesView = (model: Model, h: HtmlBuilder<Message>): Html => {
           ? { kind: 'empty', title: 'Nothing assigned to you', description: 'Issues you are assigned to and have not finished show up here.' }
           : { kind: 'rows', issues },
       pickers: pickersOf(model),
+      onOpen: id => M.OpenedIssue({ id }),
     },
     h,
   )

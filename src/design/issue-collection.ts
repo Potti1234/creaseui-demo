@@ -43,6 +43,8 @@ export const issueCollection = <Msg>(
     summary?: string
     body: CollectionBody<Msg>
     pickers: PickerContext<Msg>
+    /** Opens an issue on its own page; the row's title links to it. */
+    onOpen: (id: string) => Msg
   }>,
   h: HtmlBuilder<Msg>,
 ): Html =>
@@ -63,13 +65,13 @@ export const issueCollection = <Msg>(
           },
           h,
         ),
-        stack({ paddingInline: 2, children: [body(props.body, props.pickers, h)] }, h),
+        stack({ paddingInline: 2, children: [body(props.body, props.pickers, props.onOpen, h)] }, h),
       ],
     },
     h,
   )
 
-const body = <Msg>(content: CollectionBody<Msg>, pickers: PickerContext<Msg>, h: HtmlBuilder<Msg>): Html => {
+const body = <Msg>(content: CollectionBody<Msg>, pickers: PickerContext<Msg>, onOpen: (id: string) => Msg, h: HtmlBuilder<Msg>): Html => {
   switch (content.kind) {
     case 'groups':
       return stack(
@@ -77,7 +79,7 @@ const body = <Msg>(content: CollectionBody<Msg>, pickers: PickerContext<Msg>, h:
           gap: 1,
           children: content.groups
             .filter(group => group.issues.length > 0)
-            .map(group => issueGroup({ ...group, pickers }, h)),
+            .map(group => issueGroup({ ...group, pickers, onOpen }, h)),
         },
         h,
       )
@@ -85,7 +87,7 @@ const body = <Msg>(content: CollectionBody<Msg>, pickers: PickerContext<Msg>, h:
       return itemGroup(
         {
           children: content.issues.flatMap((issue, index) => {
-            const row = issueRow({ issue, pickers }, h)
+            const row = issueRow({ issue, pickers, onOpen }, h)
             return index === 0 ? [row] : [itemGroupSeparator(), row]
           }),
         },

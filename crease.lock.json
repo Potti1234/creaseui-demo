@@ -945,6 +945,310 @@
         }
       ],
       "id": "crease/dropdown-menu"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/alert.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/lib-alert"
+    },
+    {
+      "exports": [
+        {
+          "contract": "implementation.field",
+          "file": "src/lib/field.ts",
+          "name": "controlFieldParts",
+          "visibility": "implementation"
+        },
+        {
+          "contract": "implementation.field",
+          "file": "src/lib/field.ts",
+          "name": "renderControlField",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/field.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/lib-field"
+    },
+    {
+      "exports": [
+        {
+          "contract": "implementation.textarea",
+          "file": "src/lib/textarea.ts",
+          "name": "renderTextarea",
+          "visibility": "implementation"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/lib/textarea.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/lib-textarea"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.alert",
+          "file": "src/ui/alert.ts",
+          "name": "alert"
+        },
+        {
+          "contract": "component.alert",
+          "file": "src/ui/alert.ts",
+          "name": "alertIcon"
+        },
+        {
+          "contract": "component.alert",
+          "file": "src/ui/alert.ts",
+          "name": "alertTitle"
+        },
+        {
+          "contract": "component.alert",
+          "file": "src/ui/alert.ts",
+          "name": "alertDescription"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/alert.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/alert"
+    },
+    {
+      "exports": [
+        {
+          "contract": "overlay.dialog",
+          "file": "src/ui/dialog.ts",
+          "name": "dialogHeader"
+        },
+        {
+          "contract": "overlay.dialog",
+          "file": "src/ui/dialog.ts",
+          "name": "dialogTitle"
+        },
+        {
+          "contract": "overlay.dialog",
+          "file": "src/ui/dialog.ts",
+          "name": "dialogDescription"
+        },
+        {
+          "contract": "overlay.dialog",
+          "file": "src/ui/dialog.ts",
+          "name": "dialogFooter"
+        },
+        {
+          "contract": "overlay.dialog",
+          "file": "src/ui/dialog.ts",
+          "name": "dialog"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/dialog.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/dialog"
+    },
+    {
+      "exports": [
+        {
+          "contract": "control.field",
+          "file": "src/ui/field.ts",
+          "name": "fieldSet"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/field.ts",
+          "name": "fieldLegend"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/field.ts",
+          "name": "fieldGroup"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/field.ts",
+          "name": "controlField"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/field.ts",
+          "name": "field"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/field.ts",
+          "name": "fieldContent"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/field.ts",
+          "name": "fieldLabel"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/field.ts",
+          "name": "fieldTitle"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/field.ts",
+          "name": "fieldDescription"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/field.ts",
+          "name": "fieldSeparator"
+        },
+        {
+          "contract": "control.field",
+          "file": "src/ui/field.ts",
+          "name": "fieldError"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/field.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/field"
+    },
+    {
+      "exports": [
+        {
+          "contract": "control.textarea",
+          "file": "src/ui/textarea.ts",
+          "name": "textarea"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/textarea.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/textarea"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/command.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/lib-command"
+    },
+    {
+      "exports": [],
+      "files": [
+        {
+          "path": "src/lib/tooltip.ts",
+          "rawRendering": false,
+          "role": "behavior"
+        }
+      ],
+      "id": "crease/lib-tooltip"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.command",
+          "file": "src/ui/command.ts",
+          "name": "commandGroupHeading"
+        },
+        {
+          "contract": "component.command",
+          "file": "src/ui/command.ts",
+          "name": "commandShortcut"
+        },
+        {
+          "contract": "component.command",
+          "file": "src/ui/command.ts",
+          "name": "commandSeparator"
+        },
+        {
+          "contract": "component.command",
+          "file": "src/ui/command.ts",
+          "name": "commandEmpty"
+        },
+        {
+          "contract": "component.command",
+          "file": "src/ui/command.ts",
+          "name": "command"
+        },
+        {
+          "contract": "component.command",
+          "file": "src/ui/command.ts",
+          "name": "commandPalette"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/command.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/command"
+    },
+    {
+      "exports": [
+        {
+          "contract": "navigation.link",
+          "file": "src/ui/link.ts",
+          "name": "link"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/link.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/link"
+    },
+    {
+      "exports": [
+        {
+          "contract": "component.tooltip",
+          "file": "src/ui/tooltip.ts",
+          "name": "tooltip"
+        }
+      ],
+      "files": [
+        {
+          "path": "src/ui/tooltip.ts",
+          "rawRendering": true,
+          "role": "renderer"
+        }
+      ],
+      "id": "crease/tooltip"
     }
   ],
   "policyVersion": "crease-default-v1",

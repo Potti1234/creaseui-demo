@@ -23,6 +23,7 @@ export const searchView = (model: Model, h: HtmlBuilder<Message>): Html => {
           ? { kind: 'empty', title: 'No issues match', description: 'Try an identifier like CRE-131 or a word from the title.' }
           : { kind: 'rows', issues: results },
       pickers: pickersOf(model),
+      onOpen: id => M.OpenedIssue({ id }),
     },
     h,
   )

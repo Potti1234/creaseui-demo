@@ -4,6 +4,7 @@ import type { Issue } from '../domain'
 import { type PickerContext, propertyPicker } from './property-picker'
 import { badge } from '@/ui/badge'
 import { item, itemActions, itemContent, itemMedia, itemTitle } from '@/ui/item'
+import { link } from '@/ui/link'
 import { text } from '@/ui/text'
 
 /**
@@ -15,6 +16,8 @@ import { text } from '@/ui/text'
  * - The parts and their order are fixed: priority, identifier, status,
  *   title, labels, date, assignee. A part with no value keeps its place
  *   (an unassigned issue shows the empty assignee).
+ * - The title is a link to the issue's own page (IssueDetail), drawn in
+ *   the row's text colour; it is the row's only way in.
  * - The row is 36px and never wraps. The title is the only part that
  *   gives way: it truncates first.
  * - Metadata (identifier, date) uses the small secondary text style.
@@ -25,7 +28,7 @@ import { text } from '@/ui/text'
  * how each one appears.
  */
 export const issueRow = <Msg>(
-  props: Readonly<{ issue: Issue; pickers: PickerContext<Msg> }>,
+  props: Readonly<{ issue: Issue; pickers: PickerContext<Msg>; onOpen: (id: string) => Msg }>,
   h: HtmlBuilder<Msg>,
 ): Html => {
   const { issue, pickers } = props
@@ -44,7 +47,10 @@ export const issueRow = <Msg>(
           },
           h,
         ),
-        itemContent({ children: [itemTitle({ children: [issue.title] }, h)] }, h),
+        itemContent(
+          { children: [itemTitle({ children: [link({ href: `#${issue.id}`, color: 'inherit', maxLines: 1, class: 'min-w-0 max-w-full', onClick: props.onOpen(issue.id), children: [issue.title] }, h)] }, h)] },
+          h,
+        ),
         itemActions(
           {
             children: [

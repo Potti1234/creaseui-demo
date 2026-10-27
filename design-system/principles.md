@@ -25,7 +25,7 @@ Navigation, toolbars and metadata stay quiet so a person scanning the list reads
 | Decision | Enforced by |
 |---|---|
 | D7. Status, priority and assignee change through a picker opened from the row, without leaving the list. Focus returns to the row afterwards. | `PropertyPicker` in `src/design/property-picker.ts`; feature code may not import `@/ui/dropdown-menu`; the menu returns focus to its trigger after a selection (`src/ui/dropdown-menu.ts`) |
-| D8. Creating an issue opens the composer, the only way to create one. The draft survives closing it. | The composer (chapter 8) |
+| D8. Creating an issue opens the composer, the only way to create one. The draft survives closing it. | `IssueComposer` in `src/design/issue-composer.ts`; the draft lives in the page Model, not in the dialog |
 
 ## 4. The keyboard reaches everything, the pointer too
 

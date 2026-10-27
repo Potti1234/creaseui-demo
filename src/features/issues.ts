@@ -28,6 +28,7 @@ export const allIssuesView = (model: Model, issues: ReadonlyArray<Issue>, h: Htm
           }
         : { kind: 'rows', issues },
       pickers: pickersOf(model),
+      onOpen: id => M.OpenedIssue({ id }),
     },
     h,
   )

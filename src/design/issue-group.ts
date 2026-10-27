@@ -28,6 +28,7 @@ export const issueGroup = <Msg>(
     isCollapsed: boolean
     onToggle: Msg
     pickers: PickerContext<Msg>
+    onOpen: (id: string) => Msg
   }>,
   h: HtmlBuilder<Msg>,
 ): Html =>
@@ -78,7 +79,7 @@ export const issueGroup = <Msg>(
               itemGroup(
                 {
                   children: props.issues.flatMap((issue, index) => {
-                    const row = issueRow({ issue, pickers: props.pickers }, h)
+                    const row = issueRow({ issue, pickers: props.pickers, onOpen: props.onOpen }, h)
                     return index === 0 ? [row] : [itemGroupSeparator(), row]
                   }),
                 },
