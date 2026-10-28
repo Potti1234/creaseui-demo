@@ -39,6 +39,12 @@ Navigation, toolbars and metadata stay quiet so a person scanning the list reads
 |---|---|
 | D10. Priorities are Urgent, High, Medium, Low and No priority, in that order, everywhere. Statuses are Backlog, Todo, In Progress, In Review and Done. | The domain schemas in `src/domain.ts` |
 
+## 6. A saved view is one entry
+
+| Decision | Enforced by |
+|---|---|
+| D11. A saved view is one entry in `src/features/views.ts`: its id is its label in kebab case (`active-bugs`), its filter is in the entry, and its tests are in `test/views.test.ts`. | Review; the drift test of chapter 12 (two of three agents did this unasked) |
+
 ## How these change
 
 A decision changes in a commit that also changes its enforcing code, with the reason in the commit message. A view that needs something these decisions forbid is a design-system question first: either the decision gains a case, or the view changes.

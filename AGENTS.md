@@ -10,6 +10,8 @@ Crease Tasks is a Foldkit app built on crease/ui components (Tailwind). Before w
 
 If a feature seems to need a class the lint rejects, it is a design-system question: stop and describe the need instead of working around the rule.
 
+If a feature needs something `design-system/patterns.md` does not name (a board, a timeline), that is a design-system change too. Do not build it inside the feature task, and do not edit the decisions in `design-system/principles.md`. Describe the proposed pattern, what it decides and what it leaves open, and stop; it is reviewed and built as its own change.
+
 ## Checks
 
 ```sh

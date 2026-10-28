@@ -22,6 +22,14 @@ export const SAVED_VIEWS: ReadonlyArray<SavedView> = [
     icon: 'user-round-x',
     matches: issue => issue.assigneeId === null && (issue.status === 'backlog' || issue.status === 'todo'),
   },
+  {
+    view: 'active-bugs',
+    label: 'Active bugs',
+    icon: 'bug',
+    matches: issue =>
+      issue.labels.includes('Bug') &&
+      (issue.status === 'todo' || issue.status === 'in_progress' || issue.status === 'in_review'),
+  },
 ]
 
 export const savedViewOf = (view: View): SavedView | undefined => SAVED_VIEWS.find(each => each.view === view)

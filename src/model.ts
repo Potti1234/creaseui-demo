@@ -15,7 +15,7 @@ import * as DropdownMenu from '@/ui/dropdown-menu'
 
 /* What the main area shows: everything, the signed-in person's issues, one
    team's issues, or a saved view (src/features/views.ts). */
-export const View = S.Literals(['all', 'mine', 'team:eng', 'team:des', 'urgent', 'unassigned'])
+export const View = S.Literals(['all', 'mine', 'team:eng', 'team:des', 'urgent', 'unassigned', 'active-bugs'])
 export type View = typeof View.Type
 
 export const Sort = S.Literals(['priority', 'newest'])

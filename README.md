@@ -21,6 +21,7 @@ git diff chapter-04 chapter-05
 | `chapter-09` | Verify the whole system |
 | `chapter-10` | Configure the product policy |
 | `chapter-11` | Write a product lint rule |
+| `chapter-12` | Feature work by agents, inside the system |
 
 ## Run
 
