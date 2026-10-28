@@ -8,7 +8,7 @@ Each check catches a different kind of mistake. None of them catches everything,
 | Lint | `npm run lint` | Restyling, raw elements, implementation imports, variant values against `crease.lock.json`, the product import rule | Whether the app does the right thing |
 | Lint fixtures | `npm run check:lint-fixtures` | That the lint itself still rejects what it should (and accepts placement), after a lint or config change | Everything outside the lint |
 | Tests | `npm test` | update: commits, saves, validation, drafts, team assignment, the issue page, shortcuts, the theme switch, and every Command each step produces | Layout, focus in a real DOM, CSS |
-| Browser | `npm run check:browser` (with `npm run dev`) | Rows on one line at 900px and on a phone, same row everywhere, pickers with focus return, the composer, reload, failed and unreadable storage, team pages and saved views, the issue page, Ctrl+K and C, the dark theme including the sidebar, and component guarantees on `component-check.html` | Code paths it does not click through |
+| Browser | `npm run check:browser` (with `npm run dev`) | Rows on one line at 900px and on a phone, same row everywhere, pickers with focus return, the composer, reload, failed and unreadable storage, team pages and saved views, the issue page, Ctrl+K and C, the dark theme including the sidebar, the board (both routes to it, all columns at 1280px, scrolling inside the board below that, cards with the row's parts, a status change moving a card), and component guarantees on `component-check.html` | Code paths it does not click through |
 
 `npm run check` runs the first four. The browser check needs the running app.
 

@@ -11,6 +11,7 @@ Navigation, toolbars and metadata stay quiet so a person scanning the list reads
 | D1. An issue row has one height (36px) and never wraps. A long title is cut with an ellipsis; metadata keeps its place at the end. | `item({ size: 'xs', layout: 'inline' })` in `src/ui/item.ts`; the allowed values are in `crease.lock.json` |
 | D2. Metadata in a row (identifier, labels, date, assignee) uses the small secondary text style. | `IssueRow` in `src/design/issue-row.ts`; labels through `badge`'s `outline` look (`src/ui/badge.ts`) |
 | D3. Every view shows an issue with the same row: same parts, same order. | `IssueRow`; feature code may not import `@/ui/item` (`eslint.config.js`) |
+| D12. A board shows an issue as a card, the board's only issue layout. The card has the row's parts in the row's order, on three lines: priority, identifier and status; the title; labels, date and assignee. Unlike a row (D1), the card's title and its labels may wrap, because a column is narrow (the date follows the labels); the first line does not wrap, and no part is left out or moved. | `IssueCard` in `src/design/issue-card.ts`, used only by `IssueBoard`; feature code may not import `@/ui/item` (`eslint.config.js`); the browser check compares a card's parts with the same issue's row |
 
 ## 2. Actions are few and predictable
 

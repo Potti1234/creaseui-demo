@@ -1,6 +1,6 @@
 import type { Html, HtmlBuilder } from 'foldkit/html'
 
-import { type Issue, ME, TEAMS, personOf } from './domain'
+import { type Issue, ME, TEAMS, type Team, personOf } from './domain'
 import { appSidebar } from './design/app-sidebar'
 import { issuePage } from './features/issue'
 import { allIssuesView } from './features/issues'
@@ -10,7 +10,7 @@ import { SAVED_VIEWS, savedView, savedViewOf } from './features/views'
 import { type CommandEntry, commandMenu } from './design/command-menu'
 import { issueComposer } from './design/issue-composer'
 import { saveNotice } from './design/save-notice'
-import { type Message, Message as M, type Model, type View, pickersOf } from './model'
+import { type Message, Message as M, type Model, type View, isBoardView, pickersOf, teamIdOf, teamPage } from './model'
 import { button } from '@/ui/button'
 import { heading } from '@/ui/heading'
 import { icon } from '@/ui/icon'
@@ -20,7 +20,7 @@ import { stack } from '@/ui/stack'
 
 const isOpen = (issue: Issue): boolean => issue.status !== 'done'
 
-const teamView = (teamId: string): View => (teamId === 'eng' ? 'team:eng' : 'team:des')
+const teamOf = (view: View): Team | undefined => TEAMS.find(each => each.id === teamIdOf(view))
 
 const teamIssues = (model: Model, teamId: string): ReadonlyArray<Issue> =>
   model.issues.filter(issue => issue.teamId === teamId)
@@ -63,9 +63,15 @@ const navigation = (model: Model, h: HtmlBuilder<Message>): Html =>
           {
             label: 'Issues',
             icon: 'list',
-            isActive: isShown(model, teamView(team.id)),
-            onClick: M.SelectedView({ view: teamView(team.id) }),
+            isActive: isShown(model, teamPage(team.id, 'list')),
+            onClick: M.SelectedView({ view: teamPage(team.id, 'list') }),
             count: teamIssues(model, team.id).filter(isOpen).length,
+          },
+          {
+            label: 'Board',
+            icon: 'kanban',
+            isActive: isShown(model, teamPage(team.id, 'board')),
+            onClick: M.SelectedView({ view: teamPage(team.id, 'board') }),
           },
         ],
       })),
@@ -89,7 +95,10 @@ const commandEntries = (model: Model): ReadonlyArray<CommandEntry> => [
   { id: 'theme', label: model.isDark ? 'Use light theme' : 'Use dark theme', group: 'Actions' },
   { id: 'go:mine', label: 'My issues', group: 'Go to' },
   { id: 'go:all', label: 'All issues', group: 'Go to' },
-  ...TEAMS.map(team => ({ id: `go:${teamView(team.id)}`, label: `${team.name} · Issues`, group: 'Go to' as const })),
+  ...TEAMS.flatMap(team => [
+    { id: `go:${teamPage(team.id, 'list')}`, label: `${team.name} · Issues`, group: 'Go to' as const },
+    { id: `go:${teamPage(team.id, 'board')}`, label: `${team.name} · Board`, group: 'Go to' as const },
+  ]),
   ...SAVED_VIEWS.map(saved => ({ id: `go:${saved.view}`, label: saved.label, group: 'Go to' as const })),
   ...model.issues.map(issue => ({ id: `issue:${issue.id}`, label: `${issue.id} ${issue.title}`, group: 'Issues' as const })),
 ]
@@ -98,8 +107,9 @@ const listTitle = (model: Model): string => {
   if (model.query !== '') return 'Search'
   if (model.view === 'mine') return 'My issues'
   if (model.view === 'all') return 'All issues'
-  const team = TEAMS.find(each => teamView(each.id) === model.view)
-  return team === undefined ? (savedViewOf(model.view)?.label ?? 'All issues') : `${team.name} · Issues`
+  const team = teamOf(model.view)
+  if (team === undefined) return savedViewOf(model.view)?.label ?? 'All issues'
+  return isBoardView(model.view) ? `${team.name} · Board` : `${team.name} · Issues`
 }
 
 const title = (model: Model): string => {
@@ -114,7 +124,7 @@ const main = (model: Model, h: HtmlBuilder<Message>): Html => {
   if (model.view === 'mine') return myIssuesView(model, h)
   const saved = savedViewOf(model.view)
   if (saved !== undefined) return savedView(model, saved, h)
-  const team = TEAMS.find(each => teamView(each.id) === model.view)
+  const team = teamOf(model.view)
   return allIssuesView(model, team === undefined ? model.issues : teamIssues(model, team.id), h)
 }
 

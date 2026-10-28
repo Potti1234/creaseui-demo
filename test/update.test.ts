@@ -4,7 +4,7 @@ import { describe, expect, test } from 'vitest'
 
 import { SEED } from '../src/domain'
 import { validateTitle } from '../src/design/issue-composer'
-import { ApplyTheme, FocusTitle, Message, type Model, init, update } from '../src/model'
+import { ApplyTheme, FocusTitle, Message, type Model, init, teamIdOf, teamPage, update } from '../src/model'
 import { SaveIssues, SaveMessage } from '../src/storage'
 import * as DropdownMenu from '../src/ui/dropdown-menu'
 
@@ -120,6 +120,109 @@ describe('a team page', () => {
       Story.Command.resolve(SaveIssues, SaveMessage.SucceededSave()),
       Story.model(model => expect(model.issues[0]).toMatchObject({ id: 'CRE-143', teamId: 'des' })),
     ))
+
+  test('a new issue created on its board belongs to that team too', () =>
+    Story.story(
+      update,
+      Story.given(start),
+      Story.message(Message.SelectedView({ view: 'board:eng' })),
+      ...openComposer,
+      Story.message(Message.ChangedDraftTitle({ title: 'Cards keep their column width' })),
+      Story.message(Message.SubmittedComposer()),
+      Story.Command.resolve(DialogPrimitive.CloseDialog, DialogPrimitive.Message.CompletedCloseDialog()),
+      Story.Command.resolve(SaveIssues, SaveMessage.SucceededSave()),
+      Story.model(model => expect(model.issues[0]).toMatchObject({ id: 'CRE-143', teamId: 'eng' })),
+    ))
+
+  test('changing a status on the board moves the issue and saves', () =>
+    Story.story(
+      update,
+      Story.given(start),
+      Story.message(Message.SelectedView({ view: 'board:eng' })),
+      ...choose('CRE-124--status', 'in_progress', 2),
+      focusReturned,
+      Story.Command.resolve(SaveIssues, SaveMessage.SucceededSave()),
+      Story.model(model => {
+        expect(model.view).toBe('board:eng')
+        expect(issue(model, 'CRE-124')?.status).toBe('in_progress')
+      }),
+    ))
+})
+
+describe('a team board', () => {
+  // What the sidebar's links do: select the view.
+  const viaLink = (from: Model, view: Model['view']): Model => update(from, Message.SelectedView({ view })).model
+  const onEngineering = viaLink(start, 'team:eng')
+
+  test("the Layout switch opens the same view as the sidebar's Board link", () =>
+    Story.story(
+      update,
+      Story.given(onEngineering),
+      Story.message(Message.ToggledLayout()),
+      Story.model(model => {
+        expect(model.view).toBe('board:eng')
+        expect(model).toEqual(viaLink(onEngineering, 'board:eng'))
+      }),
+    ))
+
+  test("on a board, the Layout switch opens the same view as the sidebar's Issues link", () =>
+    Story.story(
+      update,
+      Story.given(viaLink(start, 'board:des')),
+      Story.message(Message.ToggledLayout()),
+      Story.model(model => {
+        expect(model.view).toBe('team:des')
+        expect(model).toEqual(viaLink(viaLink(start, 'board:des'), 'team:des'))
+      }),
+    ))
+
+  test('the Layout switch does nothing on a page that is not a team page', () =>
+    Story.story(
+      update,
+      Story.given(start),
+      Story.message(Message.ToggledLayout()),
+      Story.model(model => expect(model).toEqual(start)),
+    ))
+
+  test('the Board link leaves a search and an open issue, like every other link', () =>
+    Story.story(
+      update,
+      Story.given(start),
+      Story.message(Message.ChangedQuery({ query: 'focus' })),
+      Story.message(Message.OpenedIssue({ id: 'CRE-142' })),
+      Story.message(Message.SelectedView({ view: 'board:eng' })),
+      Story.model(model => expect(model).toMatchObject({ view: 'board:eng', query: '', openIssueId: null })),
+    ))
+
+  test("a card's title opens the issue page; closing it returns to the board", () =>
+    Story.story(
+      update,
+      Story.given(viaLink(start, 'board:eng')),
+      Story.message(Message.OpenedIssue({ id: 'CRE-136' })),
+      Story.model(model => expect(model).toMatchObject({ view: 'board:eng', openIssueId: 'CRE-136' })),
+      Story.message(Message.ClosedIssue()),
+      Story.model(model => expect(model).toMatchObject({ view: 'board:eng', openIssueId: null })),
+    ))
+
+  test('teamPage names each team page in each layout', () => {
+    expect([teamPage('eng', 'list'), teamPage('eng', 'board'), teamPage('des', 'list'), teamPage('des', 'board')]).toEqual([
+      'team:eng',
+      'board:eng',
+      'team:des',
+      'board:des',
+    ])
+  })
+})
+
+describe('teamIdOf', () => {
+  test.each([
+    ['team:eng', 'eng'],
+    ['board:eng', 'eng'],
+    ['team:des', 'des'],
+    ['board:des', 'des'],
+    ['all', undefined],
+    ['urgent', undefined],
+  ] as const)('%s belongs to %s', (view, teamId) => expect(teamIdOf(view)).toBe(teamId))
 })
 
 describe('the issue page', () => {

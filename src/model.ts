@@ -14,9 +14,23 @@ import * as Dialog from '@/ui/dialog'
 import * as DropdownMenu from '@/ui/dropdown-menu'
 
 /* What the main area shows: everything, the signed-in person's issues, one
-   team's issues, or a saved view (src/features/views.ts). */
-export const View = S.Literals(['all', 'mine', 'team:eng', 'team:des', 'urgent', 'unassigned', 'active-bugs'])
+   team's issues as a list (`team:`) or as a board (`board:`), or a saved view
+   (src/features/views.ts). */
+export const View = S.Literals(['all', 'mine', 'team:eng', 'team:des', 'board:eng', 'board:des', 'urgent', 'unassigned', 'active-bugs'])
 export type View = typeof View.Type
+
+/** The team whose page a view is, list or board; undefined for every other view. */
+export const teamIdOf = (view: View): string | undefined =>
+  view === 'team:eng' || view === 'board:eng' ? 'eng' : view === 'team:des' || view === 'board:des' ? 'des' : undefined
+
+export type TeamLayout = 'list' | 'board'
+
+/** A team's page in one layout. The sidebar's Issues and Board links and the
+    page's Layout switch all go through here, so they lead to the same view. */
+export const teamPage = (teamId: string, layout: TeamLayout): View =>
+  layout === 'board' ? (teamId === 'des' ? 'board:des' : 'board:eng') : teamId === 'des' ? 'team:des' : 'team:eng'
+
+export const isBoardView = (view: View): boolean => view === 'board:eng' || view === 'board:des'
 
 export const Sort = S.Literals(['priority', 'newest'])
 export type Sort = typeof Sort.Type
@@ -55,6 +69,7 @@ export type Model = typeof Model.Type
 
 export const Message = defineMessageUnion({
   SelectedView: { view: View },
+  ToggledLayout: {},
   ChangedQuery: { query: S.String },
   ClearedQuery: {},
   ToggledGrouping: {},
@@ -155,7 +170,7 @@ const submit = (model: Model): Return => {
   const checked = validateTitle(model.draft.title)
   if (!checked.ok) return { model: { ...model, titleError: checked.error }, commands: [FocusTitle()] }
   // A new issue belongs to the team whose page is open, otherwise to the draft's team.
-  const teamId = model.view === 'team:des' ? 'des' : model.view === 'team:eng' ? 'eng' : model.draft.teamId
+  const teamId = teamIdOf(model.view) ?? model.draft.teamId
   const created: Issue = { ...model.draft, id: `CRE-${model.nextNumber}`, teamId, title: checked.title, updated: 'Just now' }
   const closed = Dialog.close(model.composer)
   const next: Model = {
@@ -200,6 +215,14 @@ export const update = (model: Model, message: Message): Return =>
   M.value(message).pipe(
     M.tagsExhaustive({
       SelectedView: ({ view }) => ({ model: { ...model, view, query: '', openIssueId: null } }),
+      // The Layout switch on a team's page: the same Message as the sidebar's
+      // link to the other layout, so both routes end in the same view.
+      ToggledLayout: () => {
+        const teamId = teamIdOf(model.view)
+        return teamId === undefined
+          ? { model }
+          : update(model, Message.SelectedView({ view: teamPage(teamId, isBoardView(model.view) ? 'list' : 'board') }))
+      },
       ChangedQuery: ({ query }) => ({ model: { ...model, query, openIssueId: null } }),
       ClearedQuery: () => ({ model: { ...model, query: '' } }),
       ToggledGrouping: () => ({ model: { ...model, isGrouped: !model.isGrouped } }),

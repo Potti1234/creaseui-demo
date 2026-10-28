@@ -164,6 +164,107 @@ await check('Navigation: a team page and a saved view list only their issues', a
   expect(designRows === 4 && unassigned > 0, `rows: Design ${designRows}, Unassigned ${unassigned}`)
 })
 
+// The board (design-system change 008, decision D12).
+const sidebarLink = (name, team = 0) => page.getByRole('button', { name, exact: true }).nth(team)
+const isActive = async locator => (await locator.getAttribute('data-active')) !== null
+const columns = () => page.locator('section', { has: page.locator('[data-slot=item][data-layout=inline]') })
+const board = () => page.locator('[data-slot=stack]', { has: columns() }).last()
+const COLUMN_NAMES = ['Backlog', 'Todo', 'In Progress', 'In Review', 'Done']
+const columnHeaders = async () => (await columns().evaluateAll(sections => sections.map(section => section.innerText.split('\n')[0])))
+/* The parts of the issue's row or card, in document order: pickers by field,
+   the title link, labels, and texts (identifier, date). */
+const partsOf = id =>
+  page.locator('[data-slot=item]', { has: page.locator(`[id="${id}--status-trigger"]`) }).last().evaluate(item => {
+    const selector = '[id$="-trigger"], a[href^="#CRE-"], [data-slot=badge], [data-slot=text]'
+    return [...item.querySelectorAll(selector)]
+      .filter(part => !part.parentElement.closest(selector))
+      .map(part => (part.id.endsWith('-trigger') ? part.id.split('--')[1] : part.matches('a') ? 'title' : part.matches('[data-slot=badge]') ? `label ${part.innerText}` : part.innerText))
+      .join(' | ')
+  })
+let boardViaLink = ''
+
+await check("Board: the sidebar's Board link opens the board, one column per status, and is marked active", async () => {
+  await fresh()
+  await sidebarLink('Board').click()
+  expect((await heading()) === 'Engineering · Board', `heading is ${await heading()}`)
+  const headers = await columnHeaders()
+  expect(headers.join(',') === COLUMN_NAMES.join(','), `columns: ${headers.join(', ')}`)
+  expect(await isActive(sidebarLink('Board')), 'Board link not marked active')
+  expect(!(await isActive(sidebarLink('Issues'))), 'Issues link still marked active')
+  boardViaLink = await board().innerText()
+})
+
+await check('Board: the Layout switch opens the same view as the Board link, and the sidebar follows', async () => {
+  await sidebarLink('Issues').click()
+  expect((await heading()) === 'Engineering · Issues', `heading is ${await heading()}`)
+  await page.getByRole('button', { name: 'Layout: List' }).click()
+  expect((await heading()) === 'Engineering · Board', `heading is ${await heading()}`)
+  expect((await board().innerText()) === boardViaLink, 'the board differs from the one the Board link opens')
+  expect(await isActive(sidebarLink('Board')), 'Board link not marked active')
+  expect(!(await isActive(sidebarLink('Issues'))), 'Issues link still marked active')
+  await page.getByRole('button', { name: 'Layout: Board' }).click()
+  expect((await heading()) === 'Engineering · Issues', `heading is ${await heading()}`)
+  expect(await isActive(sidebarLink('Issues')), 'Issues link not marked active')
+  expect(!(await isActive(sidebarLink('Board'))), 'Board link still marked active')
+  await sidebarLink('Board').click()
+})
+
+await check('Board: at 1280px all five columns are visible, and nothing scrolls sideways', async () => {
+  await page.setViewportSize({ width: 1280, height: 800 })
+  const measured = await board().evaluate(region => ({
+    page: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    board: region.scrollWidth - region.clientWidth,
+    right: region.getBoundingClientRect().right,
+    columns: [...region.querySelectorAll(':scope > section')].map(section => section.getBoundingClientRect()).map(box => ({ left: Math.round(box.left), right: Math.round(box.right), width: Math.round(box.width) })),
+  }))
+  expect(measured.page <= 0, `page scrolls ${measured.page}px sideways`)
+  expect(measured.board <= 0, `board scrolls ${measured.board}px sideways`)
+  expect(measured.columns.length === 5, `${measured.columns.length} columns`)
+  expect(measured.columns.every(box => box.left >= 0 && box.right <= Math.min(measured.right, 1280) + 1), `columns at ${measured.columns.map(box => `${box.left}-${box.right}`).join(', ')}`)
+  expect(new Set(measured.columns.map(box => box.width)).size === 1, `column widths ${measured.columns.map(box => box.width).join(', ')}`)
+})
+
+await check('Board: below the column minimum the board scrolls in its own region, the page never does', async () => {
+  const sizes = []
+  for (const width of [900, 480]) {
+    await page.setViewportSize({ width, height: 800 })
+    await page.waitForTimeout(100)
+    sizes.push(
+      await board().evaluate(region => ({
+        page: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        board: region.scrollWidth - region.clientWidth,
+        narrowest: Math.min(...[...region.querySelectorAll(':scope > section')].map(section => Math.round(section.getBoundingClientRect().width))),
+      })),
+    )
+  }
+  await page.setViewportSize({ width: 1280, height: 800 })
+  expect(sizes.every(size => size.page <= 0), `page scrolls sideways: ${sizes.map(size => size.page).join(', ')}px`)
+  expect(sizes.every(size => size.board > 0), 'board does not scroll in its region')
+  expect(sizes.every(size => size.narrowest >= 176), `a column is ${Math.min(...sizes.map(size => size.narrowest))}px, under the 176px minimum`)
+})
+
+await check("D12: a card has the row's parts in the row's order; only the title and labels wrap", async () => {
+  const onCard = await partsOf('CRE-136')
+  const firstLine = await page.locator('article[data-slot=item]', { has: page.locator('[id="CRE-136--status-trigger"]') }).locator('[data-slot=item-header]').evaluate(line => Math.round(line.getBoundingClientRect().height))
+  const title = await page.locator('article[data-slot=item]').getByRole('link', { name: /Very long issue titles/ }).evaluate(link => Math.round(link.getBoundingClientRect().height))
+  await sidebarLink('Issues').click()
+  const inRow = await partsOf('CRE-136')
+  await sidebarLink('Board').click()
+  expect(onCard === inRow, `card: ${onCard} / row: ${inRow}`)
+  expect(firstLine <= 28, `the first line is ${firstLine}px tall`)
+  expect(title > 20, 'a long title does not wrap on a card')
+})
+
+await check('D7 on a board: a status change on a card moves it to its column, focus returns to its glyph', async () => {
+  await page.locator('[id="CRE-124--status-trigger"]').click()
+  await page.getByRole('menuitemradio', { name: 'In Review' }).click()
+  await page.waitForTimeout(150)
+  expect((await label('[id="CRE-124--status-trigger"]')) === 'Status: In Review', 'status not changed')
+  const column = await columns().filter({ has: page.locator('[id="CRE-124--status-trigger"]') }).first().innerText()
+  expect(column.startsWith('In Review'), `card is in ${column.split('\n')[0]}`)
+  expect((await focused()) === 'CRE-124--status-trigger', `focus on "${await focused()}"`)
+})
+
 await check('The row title opens the issue page; an empty title is refused, a valid one saved', async () => {
   await fresh()
   await page.getByRole('link', { name: 'Undo for a status change' }).click()

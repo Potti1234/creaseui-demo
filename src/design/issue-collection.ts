@@ -1,6 +1,7 @@
 import type { Html, HtmlBuilder } from 'foldkit/html'
 
 import type { Issue, Status } from '../domain'
+import { issueBoard } from './issue-board'
 import { issueGroup } from './issue-group'
 import { issueRow } from './issue-row'
 import type { PickerContext } from './property-picker'
@@ -17,9 +18,11 @@ import { text } from '@/ui/text'
  * - One bar above the list. Display controls (grouping, ordering) sit at
  *   its start; a summary of what is shown ("6 results for …") sits after
  *   them. Filters join this bar in a later chapter.
- * - The body is one of three things: groups by status, a flat list, or an
- *   empty state that says what to try instead. A view picks one; it does
- *   not build its own list.
+ * - The body is one of four things: groups by status, a flat list, a
+ *   board (IssueBoard, one column per status), or an empty state that says
+ *   what to try instead. A view picks one; it does not build its own list.
+ *   A board is never replaced by the empty state: its empty columns are
+ *   where new issues go.
  * - Groups follow the workflow order the domain defines and leave out
  *   empty statuses.
  * - Rows are always IssueRows, separated by a line, inset from the page
@@ -35,6 +38,7 @@ export type CollectionBody<Msg> =
       groups: ReadonlyArray<Readonly<{ status: Status; issues: ReadonlyArray<Issue>; isCollapsed: boolean; onToggle: Msg }>>
     }>
   | Readonly<{ kind: 'rows'; issues: ReadonlyArray<Issue> }>
+  | Readonly<{ kind: 'board'; issues: ReadonlyArray<Issue> }>
   | Readonly<{ kind: 'empty'; title: string; description: string }>
 
 export const issueCollection = <Msg>(
@@ -93,6 +97,8 @@ const body = <Msg>(content: CollectionBody<Msg>, pickers: PickerContext<Msg>, on
         },
         h,
       )
+    case 'board':
+      return issueBoard({ issues: content.issues, pickers, onOpen }, h)
     case 'empty':
       return empty(
         {

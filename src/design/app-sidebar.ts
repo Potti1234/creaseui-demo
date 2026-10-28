@@ -26,9 +26,10 @@ import { text } from '@/ui/text'
  *   (My issues, All issues), "Your teams", "Views", then the signed-in
  *   person with their actions. Sections without entries are left out.
  * - A link is an icon, a label and, where it helps, a count of open issues.
- *   All issues and saved views show no count.
+ *   All issues, saved views and a team's Board show no count (the Board
+ *   holds the same issues as the Issues link above it).
  * - A team is its initial and name, not a link. Its pages are indented links
- *   below it (Issues, and later Board).
+ *   below it: Issues, then Board.
  * - Actions are icon buttons with a name; the pattern places them, the page
  *   decides which exist.
  */
