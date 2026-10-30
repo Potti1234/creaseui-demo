@@ -91,8 +91,6 @@ const updateTyped = <Item extends string>(
   const result = Behavior.update(model, message)
   return {
     model: result.model,
-    /* Crease Tasks: a selection that closes the menu returns focus to the
-       trigger too, not only an explicit close (decision D7). */
     ...((message._tag === 'Closed' && model.isOpen) ||
     (Option.isSome(result.selection) && model.isOpen && !result.model.isOpen)
       ? { commands: [FocusTrigger({ id: model.id })] }

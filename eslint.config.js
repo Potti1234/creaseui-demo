@@ -4,8 +4,6 @@ import { creaseui } from '@creaseui/lint'
 import { productPolicy } from './policy/product-policy.js'
 
 export default [
-  // Stylesheets are checked by `creaseui-lint css`, not by ESLint.
-  { ignores: ['**/*.css'] },
   ...creaseui({
     rootDir: fileURLToPath(new URL('.', import.meta.url)),
     renderer: 'tailwind',

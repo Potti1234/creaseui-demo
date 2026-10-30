@@ -14,6 +14,9 @@ import {
   sidebarMenuBadge,
   sidebarMenuButton,
   sidebarMenuItem,
+  sidebarMenuSub,
+  sidebarMenuSubButton,
+  sidebarMenuSubItem,
 } from '@/ui/sidebar'
 import { stack } from '@/ui/stack'
 import { text } from '@/ui/text'
@@ -28,7 +31,7 @@ import { text } from '@/ui/text'
  * - A link is an icon, a label and, where it helps, a count of open issues.
  *   All issues, saved views and a team's Board show no count (the Board
  *   holds the same issues as the Issues link above it).
- * - A team is its initial and name, not a link. Its pages are indented links
+ * - A team is its initial and name, not a link. Its pages are a sub-menu
  *   below it: Issues, then Board.
  * - Actions are icon buttons with a name; the pattern places them, the page
  *   decides which exist.
@@ -44,20 +47,40 @@ export type NavLink<Msg> = Readonly<{
 
 export type NavTeam<Msg> = Readonly<{ name: string; initial: string; links: ReadonlyArray<NavLink<Msg>> }>
 
-const link = <Msg>(each: NavLink<Msg>, h: HtmlBuilder<Msg>, indent = false): Html =>
+const count = <Msg>(each: NavLink<Msg>, h: HtmlBuilder<Msg>): ReadonlyArray<Html> =>
+  each.count === undefined ? [] : [sidebarMenuBadge({ children: [String(each.count)] }, h)]
+
+const link = <Msg>(each: NavLink<Msg>, h: HtmlBuilder<Msg>): Html =>
   sidebarMenuItem(
     {
       children: [
         sidebarMenuButton(
           {
             isActive: each.isActive,
-            indent,
             onClick: each.onClick,
             children: [icon({ name: each.icon }, h), text({ children: [each.label] }, h)],
           },
           h,
         ),
-        ...(each.count === undefined ? [] : [sidebarMenuBadge({ children: [String(each.count)] }, h)]),
+        ...count(each, h),
+      ],
+    },
+    h,
+  )
+
+const subLink = <Msg>(each: NavLink<Msg>, h: HtmlBuilder<Msg>): Html =>
+  sidebarMenuSubItem(
+    {
+      children: [
+        sidebarMenuSubButton(
+          {
+            isActive: each.isActive,
+            onClick: each.onClick,
+            children: [icon({ name: each.icon }, h), text({ children: [each.label] }, h)],
+          },
+          h,
+        ),
+        ...count(each, h),
       ],
     },
     h,
@@ -81,7 +104,7 @@ const group = <Msg>(label: string | undefined, items: ReadonlyArray<Html>, h: Ht
         ),
       ]
 
-const team = <Msg>(each: NavTeam<Msg>, h: HtmlBuilder<Msg>): ReadonlyArray<Html> => [
+const team = <Msg>(each: NavTeam<Msg>, h: HtmlBuilder<Msg>): Html =>
   sidebarMenuItem(
     {
       children: [
@@ -96,12 +119,11 @@ const team = <Msg>(each: NavTeam<Msg>, h: HtmlBuilder<Msg>): ReadonlyArray<Html>
           },
           h,
         ),
+        sidebarMenuSub({ children: each.links.map(each => subLink(each, h)) }, h),
       ],
     },
     h,
-  ),
-  ...each.links.map(each => link(each, h, true)),
-]
+  )
 
 export const appSidebar = <Msg>(
   props: Readonly<{
@@ -139,7 +161,7 @@ export const appSidebar = <Msg>(
           {
             children: [
               ...group(undefined, props.links.map(each => link(each, h)), h),
-              ...group('Your teams', props.teams.flatMap(each => team(each, h)), h),
+              ...group('Your teams', props.teams.map(each => team(each, h)), h),
               ...group('Views', props.views.map(each => link(each, h)), h),
             ],
           },

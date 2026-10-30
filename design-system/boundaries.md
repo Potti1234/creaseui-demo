@@ -29,4 +29,4 @@ None since chapter 7. Every file is checked at error level and the ratchet is 0.
 
 ## Keeping the receipt in step
 
-`crease.lock.json` lists the values each component accepts. When a component's variants change, its entry changes in the same commit. TypeScript checks the component's own type, the lint checks the receipt, and nothing compares the two yet, so a value added to only one of them shows up as a type that compiles and a lint error.
+`crease.lock.json` lists the values each component accepts. When a component's variants change, its entry changes in the same commit. TypeScript checks the component's own type, the lint checks calls against the receipt, and `creaseui-lint doctor` compares the two (since chapter 15): a value the receipt allows but the component does not have is a problem, and a value the component has but the receipt leaves out is printed as a note, because narrowing in the receipt is allowed (chapter 10 narrows `badge` and `text`).

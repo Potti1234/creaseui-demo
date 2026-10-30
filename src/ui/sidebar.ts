@@ -105,7 +105,7 @@ export const sidebar = <Msg>(
         h.DataAttribute('slot', 'sidebar'),
         h.Class(
           cn(
-            'flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground',
+            'flex h-svh w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground',
             props.class,
           ),
         ),
@@ -267,6 +267,9 @@ export const sidebarTrigger = <Msg>(
         h.Type('button'),
         h.Class(
           cn(
+            // The trigger reuses Button's icon style. Crease Tasks narrowed
+            // Button to `intent` and `shape` (chapter 5), so this call names
+            // those instead of crease's 'ghost' and 'icon'.
             buttonVariants({ intent: 'secondary', shape: 'icon' }),
             'size-7',
             visibilityClass,
@@ -338,7 +341,7 @@ export const sidebarInset = <Msg>(
       h.DataAttribute('slot', 'sidebar-inset'),
       h.Class(
         cn(
-          'relative flex w-full flex-1 flex-col bg-background',
+          'relative flex w-full min-w-0 flex-1 flex-col bg-background',
           'md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2',
           props.variant === 'inset' &&
             'md:m-2 md:ml-0 md:rounded-xl md:shadow-sm',
@@ -542,11 +545,6 @@ export type SidebarMenuButtonProps<Msg> = Readonly<{
   isActive?: boolean
   variant?: SidebarMenuButtonVariants['variant']
   size?: SidebarMenuButtonVariants['size']
-  /** Crease Tasks: a nested link (a team's Issues) that stays a menu button,
-   *  so it keeps keyboard focus and `sidebarMenuBadge` alignment. crease's
-   *  `sidebarMenuSubButton` renders an anchor, which is not focusable without
-   *  an `href` (journal A0.17), and has no badge slot (A5). */
-  indent?: boolean
   tooltip?: string
   class?: string
 }>
@@ -571,7 +569,6 @@ export const sidebarMenuButton = <Msg>(
           variant: props.variant ?? 'default',
           size,
         }),
-        (props.indent ?? false) && 'pl-8',
         props.class,
       ),
     ),
@@ -653,7 +650,7 @@ export const sidebarMenuAction = <Msg>(
 export const sidebarMenuBadge = slotDiv(
   'sidebar-menu-badge',
   'menu-badge',
-  'pointer-events-none absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium text-sidebar-foreground tabular-nums select-none peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active]/menu-button:text-sidebar-accent-foreground peer-data-[size=sm]/menu-button:top-1 peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 md:group-data-[collapsible=icon]:hidden',
+  'pointer-events-none absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium text-sidebar-foreground tabular-nums select-none peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active]/menu-button:text-sidebar-accent-foreground peer-data-[size=sm]/menu-button:top-1 peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=md]/menu-button:top-1 md:group-data-[collapsible=icon]:hidden',
 )
 
 export type SidebarMenuSkeletonProps = Readonly<{
@@ -748,27 +745,27 @@ export const sidebarMenuSubButton = <Msg>(
 ): Html => {
   const size = props.size ?? 'md'
 
-  return h.a(
-    [
-      h.DataAttribute('slot', 'sidebar-menu-sub-button'),
-      h.DataAttribute('sidebar', 'menu-sub-button'),
-      h.DataAttribute('size', size),
-      ...((props.isActive ?? false) ? [h.DataAttribute('active', '')] : []),
-      ...(props.href === undefined ? [] : [h.Href(props.href)]),
-      ...(props.onClick === undefined ? [] : [h.OnClick(props.onClick)]),
-      h.Class(
-        cn(
-          'flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground ring-sidebar-ring outline-hidden hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground',
-          'data-[active]:bg-sidebar-accent data-[active]:text-sidebar-accent-foreground',
-          size === 'sm' && 'text-xs',
-          size === 'md' && 'text-sm',
-          'md:group-data-[collapsible=icon]:hidden',
-          props.class,
-        ),
+  const attributes = [
+    h.DataAttribute('slot', 'sidebar-menu-sub-button'),
+    h.DataAttribute('sidebar', 'menu-sub-button'),
+    h.DataAttribute('size', size),
+    ...((props.isActive ?? false) ? [h.DataAttribute('active', '')] : []),
+    ...(props.onClick === undefined ? [] : [h.OnClick(props.onClick)]),
+    h.Class(
+      cn(
+        'peer/menu-button flex h-7 w-full min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-start text-sidebar-foreground ring-sidebar-ring outline-hidden hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground',
+        'data-[active]:bg-sidebar-accent data-[active]:text-sidebar-accent-foreground',
+        size === 'sm' && 'text-xs',
+        size === 'md' && 'text-sm',
+        'md:group-data-[collapsible=icon]:hidden',
+        props.class,
       ),
-    ],
-    [...props.children],
-  )
+    ),
+  ]
+
+  return props.href === undefined
+    ? h.button([...attributes, h.Type('button')], [...props.children])
+    : h.a([h.Href(props.href), ...attributes], [...props.children])
 }
 
 /* Minimal page-owned state wiring:

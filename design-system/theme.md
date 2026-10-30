@@ -18,18 +18,26 @@ Preset code: `c41ST0kztg1aRr803UlnDN6.eyJkYXJrOmJvcmRlciI6Im9rbGNoKDEgMCAwIC8gOC
 
 ## Files
 
+The preset compiler writes two stylesheets and the knob values. They are copied in as they are, with one edit (see Regenerating).
+
 - `src/theme/tokens.css`: colours, radius, type scale and shadows, as CSS custom properties.
 - `src/theme/geometry.css`: the `mira` control heights, keyed by each component's `data-slot` and `data-size`. It is registered in `eslint.config.js` as theme CSS.
 - `src/theme/crease-preset.json`: the knob values, so the theme can be regenerated or reviewed.
 
 - `src/theme/mode.ts`: switches the dark token set on `<html>`. It is registered in `eslint.config.js` as a setup file, because it is the only code that changes the document's classes.
 
-`src/main.ts` loads both stylesheets after crease's base theme in `src/styles.css`, so these values win.
+`src/main.ts` loads both stylesheets after crease's base theme in `src/styles.css`, so these values win. The base theme loads the font (`@fontsource-variable/inter`).
 
 ## Light and dark
 
-The sidebar footer has a button that switches between the light and the dark token set. The end of `tokens.css` corrects two sidebar tokens by hand. In the light set, the preset's `--sidebar-accent` equals `--sidebar`, so the active link had no visible background. The dark set has no sidebar surface tokens at all, so the sidebar stayed light in dark mode; the added values come from the preset's own dark set.
+The sidebar footer has a button that switches between the light and the dark token set. Both sets include the full sidebar tokens. Until chapter 15 the end of `tokens.css` added them by hand, because the preset compiler at crease `9240b562` left them out; it emits them since crease `d0bf498a`.
 
 ## Regenerating
 
-Generate the preset into a temporary folder, then split it the same way: rules that start with `:where([data-slot=…])` go to `geometry.css`, everything else to `tokens.css`. Remove the global `h1,h2,h3,h4`, `:root svg` and `*` rules, which crease's CSS policy rejects, and replace the Google Fonts import with `@import '@fontsource-variable/inter';`. Then add the dark sidebar block from the end of the old `tokens.css` again, and run `npx creaseui-lint css`.
+In the crease repository (at `d0bf498a` or later):
+
+```sh
+npm run preset:build -- --preset <preset code> --output <temporary folder>
+```
+
+It writes `crease-preset-tokens.css`, `crease-preset-geometry.css` and `crease-preset.json`. Copy them over `tokens.css`, `geometry.css` and `crease-preset.json`, keep the comment at the top of each stylesheet, and make one edit in `tokens.css`: delete the Google Fonts `@import` on the first line and change `--font-sans` from `"Inter"` to `"Inter Variable"`, the family the base theme loads. Then run `npx creaseui-lint css`.

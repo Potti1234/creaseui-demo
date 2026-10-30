@@ -24,6 +24,7 @@ git diff chapter-04 chapter-05
 | `chapter-12` | Feature work by agents, inside the system |
 | `chapter-13` | A design-system change, proposed by an agent and reviewed |
 | `chapter-14` | Evolve an API and migrate its callers |
+| `chapter-15` | Take in changes from crease upstream |
 
 ## Run
 
@@ -39,4 +40,4 @@ npm run check:browser  # the browser check, against a running `npm run dev`
 npm run scope      # enforcement files changed in the working tree
 ```
 
-The crease components in `src/ui` and `src/lib` were installed with the shadcn CLI from `Potti1234/creaseui` at commit `9240b562`. They are this app's own source from then on. `crease.lock.json` records which files came from crease and what each export may be called with. `@creaseui/lint` is not published yet, so a packed copy is in `vendor/`.
+The crease components in `src/ui` and `src/lib` were installed with the shadcn CLI from `Potti1234/creaseui` at commit `9240b562` and updated to commit `d0bf498a` in chapter 15 (`design-system/changes/010-crease-update.md`). They are this app's own source. `crease.lock.json` records which files came from crease and what each export may be called with. `@creaseui/lint` is not published yet, so a packed copy is in `vendor/`.
