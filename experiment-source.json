@@ -1,0 +1,18 @@
+{
+  "experiment": "tasks-tailwind-oct21",
+  "kind": "informed implementation pilot, not a blind agent evaluation",
+  "creaseui": {
+    "repository": "https://github.com/Potti1234/creaseui",
+    "commit": "e5a619053ad0b344d3946664f34322057016a003",
+    "pr": 34
+  },
+  "demoBase": "98679232c0c5a5b8dcb7d92d11b5fc671e0fa47f",
+  "renderer": "tailwind",
+  "knownOpenFindings": [
+    "F3 global CSS utilities",
+    "F4 text lockfiles",
+    "F6 foundation output flow",
+    "F7 indirect form helpers"
+  ],
+  "publication": "local only; not a reviewed tutorial checkpoint"
+}
